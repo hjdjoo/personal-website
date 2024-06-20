@@ -6,12 +6,33 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "selector",
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      animation: {
+        "scroll-up": "scrollUp 10s cubic-bezier(0.55, 0, 0.2, 1) infinite",
+      },
+      keyframes: {
+        scrollUp: {
+          "0%": {
+            transform: "translateY(0)",
+          },
+          "20%": {
+            transform: "translateY(-2rem)",
+          },
+          "40%": {
+            transform: "translateY(-4rem)",
+          },
+          "60%": {
+            transform: "translateY(-6rem)",
+          },
+          "80%": {
+            transform: "translateY(-8rem)",
+          },
+          "100%": {
+            transform: "translateY(-10rem)",
+          },
+        },
       },
     },
   },
