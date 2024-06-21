@@ -10,27 +10,36 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        "scroll-up": "scrollUp 10s cubic-bezier(0.55, 0, 0.2, 1) infinite",
+        "scroll-up": "scrollUp 12s cubic-bezier(0.55, 0, 0.2, 1) infinite",
       },
       keyframes: {
         scrollUp: {
           "0%": {
             transform: "translateY(0)",
           },
-          "20%": {
+          "12.5%": {
             transform: "translateY(-2rem)",
           },
-          "40%": {
+          "25%": {
             transform: "translateY(-4rem)",
           },
-          "60%": {
+          "37.5%": {
             transform: "translateY(-6rem)",
           },
-          "80%": {
+          "50%": {
             transform: "translateY(-8rem)",
           },
-          "100%": {
+          "62.5%": {
             transform: "translateY(-10rem)",
+          },
+          "75%": {
+            transform: "translateY(-12rem)",
+          },
+          "87.5%": {
+            transform: "translateY(-14rem)",
+          },
+          "100%": {
+            transform: "translateY(-14rem)",
           },
         },
       },
