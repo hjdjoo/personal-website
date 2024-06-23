@@ -45,7 +45,7 @@ export default function Navbar() {
         <button className="relative w-8 h-4 md:w-12 md:h-6 lg:w-16 lg:h-8 rounded-full bg-slate-200 dark:bg-slate-500 flex items-center transition duration-300 focus:outline-none shadow"
           onClick={toggleModeButton}>
           <div id="toggle-switch"
-            className={`size-6 md:size-8 lg:size-10 relative rounded-full p-1 text-slate-100 transition duration-400 transform ${darkMode ? "bg-blue-950 translate-x-full" : "bg-yellow-500 -translate-x-2"}`}
+            className={`size-6 md:size-8 lg:size-10 relative rounded-full p-1 text-slate-100 transition duration-500 transform ${darkMode ? "bg-blue-950 translate-x-full" : "bg-yellow-500 -translate-x-2"}`}
             ref={darkModeButton}>
             {darkMode ? darkIcon : lightIcon}
           </div>

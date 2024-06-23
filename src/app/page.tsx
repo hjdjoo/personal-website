@@ -1,20 +1,8 @@
-"use client"
-
-import { useState, useEffect, useContext, useRef } from "react";
-
-import Image from "next/image";
 import Link from "next/link";
 
-import { lightIconSvg, darkIconSvg, musicIconSvg, sweIconSvg } from "@/lib/icons";
-import { DarkModeContext } from "@/contexts/DarkMode";
+import { musicIconSvg, sweIconSvg } from "@/lib/icons";
 
 export default function Home() {
-
-  const darkModeButton = useRef<HTMLDivElement>(null);
-  const { darkMode, toggleDarkMode } = useContext(DarkModeContext)
-
-  // const { darkMode, setDarkMode } = darkModeContext;
-  // const darkModeOn = useRef<boolean>(false);
 
   const aboutMeText = ["I'm a software engineer.", "I'm a musician.", "I'm an audio engineer.", "I'm an educator.", "I'm a science lover.", "I'm a philosphy nerd.", "I'm a history enthusiast.", "I'm a software engineer."]
 
@@ -31,9 +19,6 @@ export default function Home() {
 
   const musicIcon = musicIconSvg();
   const sweIcon = sweIconSvg();
-  const lightIcon = lightIconSvg();
-  const darkIcon = darkIconSvg();
-
 
 
   return (
