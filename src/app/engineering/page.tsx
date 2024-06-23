@@ -1,8 +1,8 @@
 export default function EngineeringPage() {
 
   return (
-    <main className="max-h-screen max-w-screen py-12 px-24 flex flex-col items-center">
-      <h1>Engineering Projects:</h1>
+    <main className="flex min-h-screen max-w-screen flex-col items-center justify-center py-12 px-24 dark:text-stone-100 bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800">
+      <h1 className="text-2xl">Engineering Projects:</h1>
     </main>
   )
 }
