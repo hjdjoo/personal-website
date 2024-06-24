@@ -32,7 +32,9 @@ export default function RootLayout({
         <body className={dmSans.className}>
           <DarkModeProvider>
             <Navbar />
-            {children}
+            <main className="flex min-h-fit max-w-screen flex-col items-center justify-center px-24 dark:text-stone-100 bg-fixed bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800">
+              {children}
+            </main>
           </DarkModeProvider>
         </body>
       </html>

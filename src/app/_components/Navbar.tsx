@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <div id="navbar"
       className="absolute w-full">
-      <div className="relative size-12 left-5 top-5 dark:text-stone-100">
+      <div className="relative size-10 md:size-12 left-5 top-5 dark:text-stone-100">
         <Link href="/">
           {homeIcon}
         </Link>

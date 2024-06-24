@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       animation: {
         "scroll-up": "scrollUp 12s cubic-bezier(0.55, 0, 0.2, 1) infinite",
+        "drop-down": "dropDown 1s linear",
       },
       keyframes: {
         scrollUp: {
