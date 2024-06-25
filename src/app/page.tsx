@@ -47,6 +47,14 @@ export default function Home() {
 
   }
 
+  function backToTop() {
+    setTimeout(() => {
+      scrollTo({ left: 0, top: 0, behavior: "smooth" })
+    }, 100)
+    setTimeout(() => {
+      setShowPortfolio(undefined);
+    }, 1800)
+  }
 
   return (
     <>
@@ -70,7 +78,7 @@ export default function Home() {
           </div>
           <div id="buttons-container"
             className="w-full md:w-3/4 lg:w-1/2 flex flex-row justify-between">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center ml-1">
               <button id="software-engineering-profile-button"
                 className="size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 onClick={() => {
@@ -81,7 +89,7 @@ export default function Home() {
               </button>
               <p className="relative text-sm">Explore Engineering Projects</p>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center mr-4">
               <button id="music-profile-button"
                 className="size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 onClick={() => {
@@ -94,22 +102,26 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {showPortfolio && <button id="close-portfolio"
-        className="relative w-24 ml-auto"
-        onClick={() => {
-          setShowPortfolio(undefined);
-        }}
-      >
-        close X
-      </button>}
       <div
         ref={portfolio}
         id="portfolio"
-        className="w-screen"
+        className={`flex flex-col w-screen items-center ${showPortfolio ? "min-h-screen" : ""}`}
       >
-        {showPortfolio === "engineering" && <EngineeringPage />}
+        {showPortfolio === "engineering" && <>
+          <EngineeringPage />
+          <button id="close-portfolio"
+            className="relative w-24 mb-4 underline"
+            onClick={() => {
+              backToTop();
+            }}
+          >
+            Back to Top
+          </button>
+        </>
+        }
         {showPortfolio === "music" && <MusicPage />}
       </div>
+
     </>
   );
 }

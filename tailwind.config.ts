@@ -11,7 +11,8 @@ const config: Config = {
     extend: {
       animation: {
         "scroll-up": "scrollUp 12s cubic-bezier(0.55, 0, 0.2, 1) infinite",
-        "drop-down": "dropDown 1s linear",
+        "drop-down": "dropDown 300ms ease-in-out forwards",
+        "close-up": "closeUp 300ms ease-in-out forwards"
       },
       keyframes: {
         scrollUp: {
@@ -43,6 +44,22 @@ const config: Config = {
             transform: "translateY(-14rem)",
           },
         },
+        dropDown: {
+          "0%": {
+            height: "0px"
+          },
+          "100%": {
+            height: "500px"
+          },
+        },
+        closeUp: {
+          "0%": {
+            height: "500px"
+          },
+          "100%": {
+            height: "0px"
+          }
+        }
       },
     },
   },
