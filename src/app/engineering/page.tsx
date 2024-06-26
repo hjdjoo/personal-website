@@ -1,39 +1,92 @@
 import DropDisplay from "@/app/_components/DropDisplay";
 import { gearIconSvg } from "@/lib/icons";
+import type { Project } from "@/types/client-types/types";
 
-const defaultData = [
+
+const defaultData: Array<Project | undefined> = [
   {
     projectName: "Beers Flower Shop",
+    inProduction: false,
     projectDescription: "E-commerce and business management application",
-    projectData: []
+    projectData: [
+      {
+        fileName: "",
+        fileType: "",
+        fileSrc: "",
+        description: "",
+        altText: "",
+      },
+      {
+        fileName: "",
+        fileType: "",
+        fileSrc: "",
+        description: "",
+        altText: "",
+      },
+    ]
   },
   {
     projectName: "Kmon",
-    projectDescription: "Monitoring and alerting for K-Raft mode Kafka clusters",
-    projectData: []
+    inProduction: true,
+    projectDescription: "Monitoring for K-Raft mode Kafka clusters",
+    projectData: [
+      {
+        fileName: "",
+        fileType: "",
+        fileSrc: "",
+        description: "",
+        altText: "",
+      },
+      {
+        fileName: "",
+        fileType: "",
+        fileSrc: "",
+        description: "",
+        altText: "",
+      },
+    ]
   },
   {
     projectName: "Swoop NYC",
+    inProduction: true,
     projectDescription: "Iteration on a NYC stooping project",
-    projectData: []
+    projectData: [
+      {
+        fileName: "",
+        fileType: "",
+        fileSrc: "",
+        description: "",
+        altText: "",
+      },
+    ]
   },
   {
     projectName: "Systemazing",
+    inProduction: false,
     projectDescription: "AI-powered system design analysis tool",
-    projectData: [],
+    projectData: [
+      {
+        fileName: "",
+        fileType: "",
+        fileSrc: "",
+        description: "",
+        altText: "",
+      },
+    ],
   }
 ]
 
 export default function EngineeringPage() {
 
-  const Projects = defaultData.map(project => {
+  const Projects = defaultData.length ? defaultData.map(project => {
+    if (!project) return;
     return (
       <>
         <DropDisplay
           key={`${project.projectName}-display`}
           projectName={project.projectName} projectDescription={project.projectDescription} />
       </>)
-  })
+  }) : [];
 
   const gearIcon = gearIconSvg();
 

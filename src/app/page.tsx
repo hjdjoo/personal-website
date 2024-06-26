@@ -37,6 +37,8 @@ export default function Home() {
 
   function scrollToPortfolio() {
 
+    if (!portfolio.current) return;
+
     const position = portfolio.current?.getBoundingClientRect();
 
     const { top } = position!
@@ -53,7 +55,7 @@ export default function Home() {
     }, 100)
     setTimeout(() => {
       setShowPortfolio(undefined);
-    }, 1800)
+    }, 800)
   }
 
   return (
@@ -102,13 +104,14 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div
-        ref={portfolio}
-        id="portfolio"
-        className={`flex flex-col w-screen items-center ${showPortfolio ? "min-h-screen" : ""}`}
-      >
-        {showPortfolio === "engineering" && <>
-          <EngineeringPage />
+      {showPortfolio &&
+        <div
+          ref={portfolio}
+          id="portfolio"
+          className={`flex flex-col w-screen items-center justify-center ${showPortfolio ? "min-h-screen" : ""}`}
+        >
+          {showPortfolio === "engineering" && <EngineeringPage />}
+          {showPortfolio === "music" && <MusicPage />}
           <button id="close-portfolio"
             className="relative w-24 mb-4 underline"
             onClick={() => {
@@ -117,11 +120,8 @@ export default function Home() {
           >
             Back to Top
           </button>
-        </>
-        }
-        {showPortfolio === "music" && <MusicPage />}
-      </div>
-
+        </div>
+      }
     </>
   );
 }

@@ -51,7 +51,7 @@ export default function DropDisplay(props: DropDisplayProps) {
           </div>
         </div>
       </div>
-      <div className={`w-full bg-gradient-to-r from-slate-100 to-white dark:bg-gradient-to-r dark:from-sky-950 dark:to-indigo-800 ${isOpen ? "animate-drop-down" : isActive ? "animate-close-up" : ""}`}>
+      <div className={`w-full rounded-sm bg-gradient-to-r from-slate-100 to-white dark:bg-gradient-to-r dark:from-slate-950 dark:to-indigo-800 ${isOpen ? "animate-drop-down" : isActive ? "animate-close-up" : ""}`}>
       </div>
     </>
   )
