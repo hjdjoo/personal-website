@@ -1,14 +1,12 @@
 export interface Project {
   projectName: string,
-  inProduction: boolean,
   projectDescription: string,
   projectData: Array<ProjectData | undefined>
 }
 
 export interface ProjectData {
-  fileName: string,
   fileType: string,
-  fileSrc: string,
-  description: string,
+  fileDescription: string,
   altText: string,
+  src: string,
 }

@@ -113,17 +113,27 @@ export const musicNoteIconSvg = () => {
 }
 
 /** other icons */
-// Right arrow for toggling boxes
+// Right arrow also used for for toggling boxes
 export const nextButtonSvg = () => {
   return (<>
     <svg fill="currentColor" version="1.1" id="XMLID_287_" xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24">
       <g id="next">
         <g>
-          <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 		" />
+          <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12" />
         </g>
       </g>
     </svg></>)
+}
+
+export const prevButtonSvg = () => {
+  return (<>
+    <svg fill="currentColor" version="1.1" id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 42 42">
+      <polygon fillRule="evenodd" points="31,38.32 13.391,21 31,3.68 28.279,1 8,21.01 28.279,41 " />
+    </svg>
+  </>)
 }
 
 export const constructionIconSvg = () => {

@@ -1,98 +1,105 @@
+import { useState, useEffect } from "react";
+
 import DropDisplay from "@/app/_components/DropDisplay";
+
 import { gearIconSvg } from "@/lib/icons";
 import type { Project } from "@/types/client-types/types";
 
+// import { createClient } from "@/utils/supabase/client";
+import getProjectData from "@/utils/supabase/clientActions/getProjectData";
 
-const defaultData: Array<Project | undefined> = [
-  {
-    projectName: "Beers Flower Shop",
-    inProduction: false,
-    projectDescription: "E-commerce and business management application",
-    projectData: [
-      {
-        fileName: "",
-        fileType: "",
-        fileSrc: "",
-        description: "",
-        altText: "",
-      },
-      {
-        fileName: "",
-        fileType: "",
-        fileSrc: "",
-        description: "",
-        altText: "",
-      },
-    ]
-  },
-  {
-    projectName: "Kmon",
-    inProduction: true,
-    projectDescription: "Monitoring for K-Raft mode Kafka clusters",
-    projectData: [
-      {
-        fileName: "",
-        fileType: "",
-        fileSrc: "",
-        description: "",
-        altText: "",
-      },
-      {
-        fileName: "",
-        fileType: "",
-        fileSrc: "",
-        description: "",
-        altText: "",
-      },
-    ]
-  },
-  {
-    projectName: "Swoop NYC",
-    inProduction: true,
-    projectDescription: "Iteration on a NYC stooping project",
-    projectData: [
-      {
-        fileName: "",
-        fileType: "",
-        fileSrc: "",
-        description: "",
-        altText: "",
-      },
-    ]
-  },
-  {
-    projectName: "Systemazing",
-    inProduction: false,
-    projectDescription: "AI-powered system design analysis tool",
-    projectData: [
-      {
-        fileName: "",
-        fileType: "",
-        fileSrc: "",
-        description: "",
-        altText: "",
-      },
-    ],
-  }
-]
+
+// const defaultData: Array<Project | undefined> = [
+//   {
+//     projectName: "Beers Flower Shop",
+//     projectDescription: "E-commerce and business management application",
+//     projectData: [
+//       {
+//         fileType: "",
+//         src: "",
+//         fileDescription: "",
+//         altText: "",
+//       },
+//       {
+//         fileType: "",
+//         src: "",
+//         fileDescription: "",
+//         altText: "",
+//       },
+//     ]
+//   },
+//   {
+//     projectName: "Kmon",
+//     projectDescription: "Monitoring for K-Raft mode Kafka clusters",
+//     projectData: [
+//       {
+//         fileType: "",
+//         src: "",
+//         fileDescription: "",
+//         altText: "",
+//       },
+//       {
+//         fileType: "",
+//         src: "",
+//         fileDescription: "",
+//         altText: "",
+//       },
+//     ]
+//   },
+//   {
+//     projectName: "Swoop NYC",
+//     projectDescription: "Iteration on a NYC stooping project",
+//     projectData: [
+//       {
+//         fileType: "",
+//         src: "",
+//         fileDescription: "",
+//         altText: "",
+//       },
+//     ]
+//   },
+//   {
+//     projectName: "Systemazing",
+//     projectDescription: "AI-powered system design analysis tool",
+//     projectData: [
+//       {
+//         fileType: "",
+//         src: "",
+//         fileDescription: "",
+//         altText: "",
+//       },
+//     ],
+//   }
+// ]
 
 export default function EngineeringPage() {
 
-  const Projects = defaultData.length ? defaultData.map(project => {
-    if (!project) return;
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+
+    (async () => {
+      const { data, error } = await getProjectData("engineering")
+      setProjects([...data])
+    })();
+
+  }, [])
+
+  const Projects = projects.length ? projects.map((project) => {
     return (
-      <>
-        <DropDisplay
-          key={`${project.projectName}-display`}
-          projectName={project.projectName} projectDescription={project.projectDescription} />
-      </>)
+
+      <DropDisplay
+        key={`${project.projectName!}-display`}
+        projectName={project.projectName} projectDescription={project.projectDescription} projectData={project.projectData} />
+    )
   }) : [];
 
   const gearIcon = gearIconSvg();
 
   return (
     <div id="engineering-page"
-      className="h-3/4 w-full max-w-screen flex flex-col items-center justify-center py-12 lg:px-12">
+      className="h-3/4 w-full max-w-screen
+      md:max-w-[1080px] lg:max-w-[1200px] flex flex-col items-center justify-center py-12 lg:px-12">
       <div id="engineering-page-title"
         className="flex my-8">
         <h1 className="text-2xl font-bold my-auto">
