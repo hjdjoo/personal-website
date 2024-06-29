@@ -84,7 +84,8 @@ export default function Home() {
               <button id="software-engineering-profile-button"
                 className="size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 onClick={() => {
-                  setShowPortfolio("engineering");
+                  if (showPortfolio !== "engineering") setShowPortfolio("engineering");
+                  else scrollToPortfolio()
                 }}
               >
                 {sweIcon}
@@ -95,7 +96,8 @@ export default function Home() {
               <button id="music-profile-button"
                 className="size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 onClick={() => {
-                  setShowPortfolio("music");
+                  if (showPortfolio !== "music") setShowPortfolio("music");
+                  else scrollToPortfolio();
                 }}>
                 {musicIcon}
               </button>
@@ -108,7 +110,7 @@ export default function Home() {
         <div
           ref={portfolio}
           id="portfolio"
-          className={`flex flex-col w-screen items-center justify-center ${showPortfolio ? "min-h-screen" : ""}`}
+          className={`flex flex-col w-screen items-center ${showPortfolio ? "min-h-screen" : ""}`}
         >
           {showPortfolio === "engineering" && <EngineeringPage />}
           {showPortfolio === "music" && <MusicPage />}

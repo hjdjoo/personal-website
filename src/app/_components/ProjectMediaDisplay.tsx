@@ -21,7 +21,7 @@ export default function ProjectMediaDisplay(props: ProjectMediaDisplayProps) {
     <div>
       {fileType.includes("video") ? (
         <>
-          <video controls width="100%" preload="auto" src={src} >
+          <video controls width="100%" height="100%" preload="auto" src={src} >
             <source src={src} type={fileType} />
           </video>
           <p className="text-center my-4">{fileDescription}</p>

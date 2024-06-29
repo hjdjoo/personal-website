@@ -54,7 +54,7 @@ export default function DropDisplay(props: DropDisplayProps) {
     if (!data) return;
     return (
       <li key={`${projectName}-media-${idx + 1}`}
-        className="relative flex-grow-0 flex-shrink-0 w-full max-h-[500px] md:max-h-[600px] lg:max-h-[800px] px-10"
+        className="relative flex-grow-0 flex-shrink-0 w-full max-h-full px-4 sm:px-10 md:px-20"
       >
         <ProjectMediaDisplay
           projectData={data} />
@@ -110,7 +110,7 @@ export default function DropDisplay(props: DropDisplayProps) {
       </div>
       {dropdownStatus !== "closed" &&
         <div id={`${projectName}-media-spacer`}
-          className={`relative bg-transparent w-full h-[400px] md:h-[550px] lg:h-[600px]`}
+          className={`relative bg-transparent w-full h-[450px] md:h-[600px] lg:h-[700px]`}
         >
           <div id={`${projectName}-media-display`}
             className={`relative w-full flex flex-col justify-end overflow-hidden rounded-sm bg-gradient-to-r from-slate-100 to-white dark:bg-gradient-to-r dark:from-slate-950 dark:to-indigo-800 ${dropdownClasses()}`}>
@@ -123,8 +123,8 @@ export default function DropDisplay(props: DropDisplayProps) {
             </ul>
             {dropdownStatus === "open" &&
               <div id="arrow-nav-box" className="w-full flex justify-between px-10 pb-5">
-                <div className="size-8" onClick={handleBack}>{prevButton}</div>
-                <div className="size-8" onClick={handleNext}>{nextButton}</div>
+                <div className="size-8 hover:cursor-pointer z-10" onClick={handleBack}>{prevButton}</div>
+                <div className="size-8 hover:cursor-pointer z-10" onClick={handleNext}>{nextButton}</div>
               </div>
             }
           </div>
