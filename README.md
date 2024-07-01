@@ -1,4 +1,4 @@
-## Getting Started
+## Getting Started -
 
 run the development server:
 
@@ -11,5 +11,6 @@ pnpm dev
 # or
 bun dev
 ```
+
 
 Open [http://localhost:3000](http://localhost:3000).
