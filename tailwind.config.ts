@@ -18,28 +18,28 @@ const config: Config = {
             transform: "translateY(0)",
           },
           "12.5%": {
-            transform: "translateY(-2rem)",
+            transform: "translateY(-1.75rem)",
           },
           "25%": {
-            transform: "translateY(-4rem)",
+            transform: "translateY(-3.5rem)",
           },
           "37.5%": {
-            transform: "translateY(-6rem)",
+            transform: "translateY(-5.25rem)",
           },
           "50%": {
-            transform: "translateY(-8rem)",
+            transform: "translateY(-7rem)",
           },
           "62.5%": {
-            transform: "translateY(-10rem)",
+            transform: "translateY(-8.75rem)",
           },
           "75%": {
-            transform: "translateY(-12rem)",
+            transform: "translateY(-10.5rem)",
           },
           "87.5%": {
-            transform: "translateY(-14rem)",
+            transform: "translateY(-12.25rem)",
           },
           "100%": {
-            transform: "translateY(-14rem)",
+            transform: "translateY(-12.25rem)",
           },
         },
         dropDown: {
