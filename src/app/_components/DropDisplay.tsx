@@ -168,12 +168,12 @@ export default function DropDisplay(props: DropDisplayProps) {
         <div
           className="w-full h-10 bg-indigo-300/30 dark:bg-slate-800 flex justify-around items-center ">
           <div id={`${projectName}-tech-stack`}
-            className="hover:cursor-pointer transition duration-300 hover:translate-y-[2px]"
+            className="text-xs sm:text-sm md:text-md hover:cursor-pointer transition duration-300 hover:translate-y-[2px]"
             onClick={handleShowTechStack}
           >
             View Tech Stack {">"}
           </div>
-          <div id={`${projectName}-github-link`} className="transition duration-300 hover:translate-y-[2px]">
+          <div id={`${projectName}-github-link`} className="text-xs sm:text-sm md:text-md transition duration-300 hover:translate-y-[2px]">
             <a href={`${githubRepo}`}>View Github Repo {">"}</a>
           </div>
         </div>
