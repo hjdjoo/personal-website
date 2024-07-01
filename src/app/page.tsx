@@ -14,7 +14,7 @@ const techStack = ["NextJS", "React", "TypeScript", "TailwindCSS", "PostgreSQL"]
 export default function Home() {
 
   const portfolio = useRef<HTMLDivElement>(null)
-  const [showPortfolio, setShowPortfolio] = useState<"engineering" | "music" | undefined>()
+  const [showPortfolio, setShowPortfolio] = useState<"engineering" | "music" | undefined>();
   const [showTechStack, setShowTechStack] = useState<boolean>(false);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <>
-      <div id="splash-container" className="h-screen w-full flex flex-col justify-center items-center">
+      <div id="splash-container" className="h-screen w-full py-12 pb-12 flex flex-col justify-center items-center">
         <div id="content-container"
           className="flex-1 min-h-[500px] max-h-[500px] w-full flex flex-col items-center justify-between text-center overflow-x-hidden object-contain">
           <div id="intro-box"
@@ -136,10 +136,10 @@ export default function Home() {
                   setShowTechStack(!showTechStack)
                 }}
               >
-                Portfolio Tech stack
+                Portfolio Tech stack {">"}
               </div>
               <div id="portfolio-github-link">
-                <a href="https://github.com/hjdjoo/personal-website">Portfolio Github Repo</a>
+                <a href="https://github.com/hjdjoo/personal-website">Portfolio Github Repo {">"}</a>
               </div>
             </div>
             <div id="portfolio-tech-stack-list"
