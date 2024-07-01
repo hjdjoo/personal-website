@@ -134,9 +134,9 @@ export default function DropDisplay(props: DropDisplayProps) {
           </div>
         </div>}
       <div id={`${projectName}-other-info-div`}
-        className="w-full">
+        className="w-full text-slate-950 dark:text-slate-200">
         <div
-          className="w-full h-8 bg-slate-800 flex justify-around items-center ">
+          className="w-full h-8 bg-indigo-300/30 dark:bg-slate-800 flex justify-around items-center ">
           <div id={`${projectName}-tech-stack`}
             className="hover:cursor-pointer"
             onClick={handleShowTechStack}

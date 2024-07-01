@@ -129,7 +129,7 @@ export default function Home() {
           <div id="portfolio-info-div"
             className="w-full md:max-w-[1080px] lg:max-w-[1200px]h-fit mt-12 flex flex-col items-center">
             <div
-              className="w-5/6 h-10 bg-sky-900 flex justify-around items-center ">
+              className="w-5/6 h-fit px-2 py-2 bg-sky-400/15 dark:bg-sky-900 flex justify-around items-center ">
               <div id="portfolio-tech-stack"
                 className="hover:cursor-pointer"
                 onClick={() => {

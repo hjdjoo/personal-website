@@ -17,7 +17,7 @@ export default function TechStackDisplay(props: TechStackDisplayProps) {
   })
 
   return (
-    <div className={`${className} transition-colors bg-slate-500/30 duration-300 `}>
+    <div className={`${className} `}>
       {techDisplays}
     </div>
   )
