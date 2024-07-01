@@ -38,7 +38,7 @@ export default function Home() {
     return (
       <li key={`about-darryl-${idx + 1}`}
         aria-hidden={idx === aboutMeText.length - 1}
-        className="text-2xl"
+        className="w-full text-xl"
       >
         {info}
       </li>
