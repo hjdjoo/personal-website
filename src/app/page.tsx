@@ -16,6 +16,15 @@ export default function Home() {
   const portfolio = useRef<HTMLDivElement>(null)
   const [showPortfolio, setShowPortfolio] = useState<"engineering" | "music" | undefined>();
   const [showTechStack, setShowTechStack] = useState<boolean>(false);
+  const [techStackOpen, setTechStackOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!showTechStack) return;
+    setTimeout(() => {
+      setTechStackOpen(showTechStack)
+    }, 100)
+
+  }, [showTechStack])
 
   useEffect(() => {
 
@@ -62,11 +71,26 @@ export default function Home() {
     }, 800)
   }
 
+
+  const handleShowTechStack = () => {
+
+    if (!showTechStack && !techStackOpen) {
+      setShowTechStack(!showTechStack);
+      return;
+    } else if (showTechStack && techStackOpen) {
+      setTechStackOpen(!techStackOpen);
+      setTimeout(() => {
+        setShowTechStack(!showTechStack);
+      }, 300);
+    };
+  }
+
+
   return (
     <>
       <div id="splash-container" className="h-screen w-full py-12 pb-12 flex flex-col justify-center items-center">
         <div id="content-container"
-          className="flex-1 min-h-[500px] max-h-[500px] w-full flex flex-col items-center justify-between text-center overflow-x-hidden object-contain">
+          className="flex-1 min-h-[550px] max-h-[550px] w-full flex flex-col items-center justify-between text-center overflow-x-none object-contain">
           <div id="intro-box"
             className="w-min">
             <h1 className="text-5xl my-3 whitespace-nowrap">Hello, world!</h1>
@@ -79,6 +103,14 @@ export default function Home() {
               {aboutMe}
             </ul>
           </span>
+          <div id="download-resume"
+            className="transition duration-300 hover:translate-y-1"
+          >
+            <a href="/darryl_joo_resume.pdf" download
+              className="font-bold bg-slate-300 dark:bg-slate-500 px-2 py-2 rounded-lg transition duration-200 hover:bg-slate-600 hover:dark:bg-slate-700 hover:text-slate-200">
+              Download Resume
+            </a>
+          </div>
           <div>
             <p className="text-lg">You can learn more below.</p>
           </div>
@@ -93,8 +125,8 @@ export default function Home() {
                 }}
               >
                 {sweIcon}
+                <p className="relative text-sm">Explore Engineering Projects</p>
               </button>
-              <p className="relative text-sm">Explore Engineering Projects</p>
             </div>
             <div className="flex flex-col items-center mr-4">
               <button id="music-profile-button"
@@ -104,8 +136,8 @@ export default function Home() {
                   else scrollToPortfolio();
                 }}>
                 {musicIcon}
+                <p className="text-sm">Explore Music Projects</p>
               </button>
-              <p className="text-sm">Explore Music Projects</p>
             </div>
           </div>
         </div>
@@ -129,16 +161,15 @@ export default function Home() {
           <div id="portfolio-info-div"
             className="w-full md:max-w-[1080px] lg:max-w-[1200px]h-fit mt-12 flex flex-col items-center">
             <div
-              className="w-5/6 h-fit px-2 py-2 bg-sky-400/15 dark:bg-sky-900 flex justify-around items-center ">
+              className="w-5/6 h-fit px-2 py-2 bg-gradient-to-r from-sky-400/15 to-sky-300/15 dark:bg-gradient-to-r dark:from-sky-950 dark:to-indigo-900 flex justify-around items-center ">
               <div id="portfolio-tech-stack"
-                className="hover:cursor-pointer"
-                onClick={() => {
-                  setShowTechStack(!showTechStack)
-                }}
+                className="hover:cursor-pointer transition duration-300  hover:translate-y-[2px]"
+                onClick={handleShowTechStack}
               >
-                Portfolio Tech stack {">"}
+                View Portfolio Tech Stack {">"}
               </div>
-              <div id="portfolio-github-link">
+              <div id="portfolio-github-link"
+                className="transition duration-300 hover:translate-y-[2px]">
                 <a href="https://github.com/hjdjoo/personal-website">Portfolio Github Repo {">"}</a>
               </div>
             </div>
@@ -146,7 +177,7 @@ export default function Home() {
               className="z-20 mb-40 4min-h-full w-5/6 flex flex-col">
               {showTechStack &&
                 <TechStackDisplay
-                  className="z-50 max-w-full flex-1 flex justify-center py-2 flex-wrap bg-slate-500/15"
+                  className={`z-50 max-w-full flex-1 flex justify-center py-1 flex-wrap bg-slate-400/15 italic text-sm transition-opacity ease-in duration-100 ${showTechStack ? "" : "hidden"} ${techStackOpen ? "opacity-100" : "opacity-0"}`}
                   projectName="portfolio" techStack={techStack} />}
             </div>
           </div>
