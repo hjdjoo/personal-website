@@ -9,8 +9,7 @@ interface ProjectMediaDisplayProps {
 export default function ProjectMediaDisplay(props: ProjectMediaDisplayProps) {
 
   const { fileType, fileDescription, altText, src } = props.projectData;
-  // console.log("ProjectMedia/", props.projectData)
-  // console.log("fileType, fileDescription", fileType, fileDescription);
+
   if (!props.projectData) {
     return (
       <>

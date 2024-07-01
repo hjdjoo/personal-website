@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect, MouseEvent } from "react";
+import { useState, useRef, MouseEvent } from "react";
 
 import { nextButtonSvg, prevButtonSvg } from "@/lib/icons";
 
-import { ProjectData, Project } from "@/types/client-types/types";
+import { Project } from "@/types/client-types/types";
 
 import ProjectMediaDisplay from "./ProjectMediaDisplay";
 import TechStackDisplay from "./TechStackDisplay";
@@ -14,9 +14,7 @@ import getComponentSize from "@/utils/actions/getComponentSize";
 
 
 interface DropDisplayProps extends Project {
-  // projectName: string,
-  // projectDescription: string,
-  // projectData: Array<ProjectData | undefined>
+
 }
 
 export default function DropDisplay(props: DropDisplayProps) {
@@ -24,11 +22,11 @@ export default function DropDisplay(props: DropDisplayProps) {
   const { projectName, projectDescription, techStack, githubRepo, projectData } = props;
 
   /** Refs and States **/
-  const projectBox = useRef<HTMLDivElement>(null)
-  const gallery = useRef<HTMLUListElement>(null)
+  const projectBox = useRef<HTMLDivElement>(null);
+  const gallery = useRef<HTMLUListElement>(null);
   const techStackDisplay = useRef<HTMLDivElement>(null);
 
-  const [dropdownStatus, setDropdownStatus] = useState<"closed" | "open" | "opening" | "closing">("closed")
+  const [dropdownStatus, setDropdownStatus] = useState<"closed" | "open" | "opening" | "closing">("closed");
 
   const [showTechStack, setShowTechStack] = useState<boolean>(false);
 
@@ -39,16 +37,16 @@ export default function DropDisplay(props: DropDisplayProps) {
   const handleClick = () => {
 
     if (dropdownStatus === "closed") {
-      setDropdownStatus("opening")
+      setDropdownStatus("opening");
       setTimeout(() => {
         setDropdownStatus("open")
-      }, 400)
+      }, 400);
     }
     if (dropdownStatus === "open") {
       setDropdownStatus("closing")
       setTimeout(() => {
-        setDropdownStatus("closed")
-      }, 400)
+        setDropdownStatus("closed");
+      }, 400);
     }
   }
 
@@ -67,42 +65,32 @@ export default function DropDisplay(props: DropDisplayProps) {
 
   const dropdownClasses = () => {
     if (dropdownStatus === "closed") {
-      return "h-0"
+      return "h-0";
     }
     if (dropdownStatus === "opening") {
-      return "animate-drop-down"
+      return "animate-drop-down";
     }
     if (dropdownStatus === "open") {
-      return "h-full"
+      return "h-full";
     }
     if (dropdownStatus === "closing") {
-      return "animate-close-up"
+      return "animate-close-up";
     }
   }
 
-  const handleShowTechStack = (e: MouseEvent<HTMLDivElement>) => {
-    // console.log(e);
-
-    // console.log(techStackDisplay.current);
-    // // if (!techStackDisplay.current) return;
-    // const { clientX: xPos, clientY: yPos } = e;
-    // const xCoord = `-left-[${xPos}px]`;
-    // const yCoord = `-top-[${yPos}px]`
-
-    // techStackDisplay.current?.classList.add(xCoord, yCoord)
+  const handleShowTechStack = (_e: MouseEvent<HTMLDivElement>) => {
 
     setShowTechStack(!showTechStack)
   }
 
   const handleBack = () => {
-    const { width } = getComponentSize(projectBox.current!)
-    console.log(width);
-    gallery.current?.scrollBy({ left: -width, top: 0, behavior: "smooth" })
+    const { width } = getComponentSize(projectBox.current!);
+    gallery.current?.scrollBy({ left: -width, top: 0, behavior: "smooth" });
   }
 
   const handleNext = () => {
-    const { width } = getComponentSize(projectBox.current!)
-    gallery.current?.scrollBy({ left: width, top: 0, behavior: "smooth" })
+    const { width } = getComponentSize(projectBox.current!);
+    gallery.current?.scrollBy({ left: width, top: 0, behavior: "smooth" });
   }
 
 

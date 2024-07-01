@@ -17,16 +17,24 @@ export default function EngineeringPage() {
   useEffect(() => {
 
     (async () => {
-      const { data, error } = await getProjectData("engineering")
+      try {
+        const { data, error } = await getProjectData("engineering");
 
+        if (error) {
+          throw new Error("Error while querying db")
+        }
 
-      const beersFlowers = data.filter((project) => {
-        return project.projectName === "Beers Flower Shop"
-      });
+        const beersFlowers = data.filter((project) => {
+          return project.projectName === "Beers Flower Shop"
+        });
 
-      const otherProjects = data.filter((project => { return project.projectName !== "Beers Flower Shop" }))
+        const otherProjects = data.filter((project => { return project.projectName !== "Beers Flower Shop" }))
 
-      setProjects([...beersFlowers, ...otherProjects])
+        setProjects([...beersFlowers, ...otherProjects]);
+      }
+      catch (e) {
+        console.error(e);
+      }
     })();
 
   }, [])
