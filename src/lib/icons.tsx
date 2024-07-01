@@ -11,7 +11,7 @@ export const musicIconSvg = () => {
 export const sweIconSvg = () => {
   return (
     <>
-      <svg className="h-32 w-32" version="1.1" xmlns="http://www.w3.org/2000/svg"
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 49.336 49.336"
         fill="currentColor"
       >

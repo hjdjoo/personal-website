@@ -115,10 +115,10 @@ export default function Home() {
             <p className="text-lg">You can learn more below.</p>
           </div>
           <div id="buttons-container"
-            className="w-full md:w-3/4 lg:w-1/2 flex flex-row justify-between">
-            <div className="flex flex-col items-center ml-1">
+            className="w-full md:w-3/4 lg:w-1/2 mb-20 flex flex-row justify-between">
+            <div className="flex-1 flex flex-col items-center ml-1">
               <button id="software-engineering-profile-button"
-                className="size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
+                className="size-24 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 onClick={() => {
                   if (showPortfolio !== "engineering") setShowPortfolio("engineering");
                   else scrollToPortfolio()
@@ -128,9 +128,9 @@ export default function Home() {
                 <p className="relative text-sm">Explore Engineering Projects</p>
               </button>
             </div>
-            <div className="flex flex-col items-center mr-4">
+            <div className="flex-1 flex flex-col items-center mr-4">
               <button id="music-profile-button"
-                className="size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
+                className="size-24 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 onClick={() => {
                   if (showPortfolio !== "music") setShowPortfolio("music");
                   else scrollToPortfolio();
@@ -163,13 +163,13 @@ export default function Home() {
             <div
               className="w-5/6 h-fit px-2 py-2 bg-gradient-to-r from-sky-400/15 to-sky-300/15 dark:bg-gradient-to-r dark:from-sky-950 dark:to-indigo-900 flex justify-around items-center ">
               <div id="portfolio-tech-stack"
-                className="hover:cursor-pointer transition duration-300  hover:translate-y-[2px]"
+                className="text-sm sm:text-md  hover:cursor-pointer transition duration-300  hover:translate-y-[2px]"
                 onClick={handleShowTechStack}
               >
                 View Portfolio Tech Stack {">"}
               </div>
               <div id="portfolio-github-link"
-                className="transition duration-300 hover:translate-y-[2px]">
+                className="text-sm sm:text-md  transition duration-300 hover:translate-y-[2px]">
                 <a href="https://github.com/hjdjoo/personal-website">Portfolio Github Repo {">"}</a>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function Home() {
               className="z-20 mb-40 4min-h-full w-5/6 flex flex-col">
               {showTechStack &&
                 <TechStackDisplay
-                  className={`z-50 max-w-full flex-1 flex justify-center py-1 flex-wrap bg-slate-400/15 italic text-sm transition-opacity ease-in duration-100 ${showTechStack ? "" : "hidden"} ${techStackOpen ? "opacity-100" : "opacity-0"}`}
+                  className={`z-50 max-w-full flex-1 flex justify-center py-1 flex-wrap bg-slate-400/15 italic text-xs transition-opacity ease-in duration-100 ${showTechStack ? "" : "hidden"} ${techStackOpen ? "opacity-100" : "opacity-0"}`}
                   projectName="portfolio" techStack={techStack} />}
             </div>
           </div>
