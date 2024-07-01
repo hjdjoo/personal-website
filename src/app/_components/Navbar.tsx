@@ -41,9 +41,9 @@ export default function Navbar() {
           {homeIcon}
         </button>
         {showHome && <>
-          <div className="absolute w-64 left-16 top-0 bg-slate-500/50 flex justify-center">
+          <div className="absolute w-48 left-16 top-0 bg-slate-500/50 flex justify-center">
             <p className="text-sm">
-              Home is just, like, a state of mind, man...
+              Home is where my dog is.
             </p>
           </div>
         </>}

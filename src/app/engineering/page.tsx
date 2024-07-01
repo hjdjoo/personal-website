@@ -62,14 +62,7 @@ export default function EngineeringPage() {
           {gearIcon}
         </div>
       </div>
-      <div id="download-resume"
-        className="bg-slate-400 px-2 py-2 rounded-lg transition duration-300 hover:translate-y-1 hover:bg-slate-500"
-      >
-        <a href="/darryl_joo_resume.pdf" download
-          className="font-bold">
-          Download Resume
-        </a>
-      </div>
+
       <div id="project-display"
         className="h-auto w-5/6 flex flex-col justify-start items-center">
         {Projects}
