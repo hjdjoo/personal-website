@@ -14,7 +14,7 @@ const techStack = ["NextJS", "React", "TypeScript", "TailwindCSS", "PostgreSQL"]
 export default function Home() {
 
   const portfolio = useRef<HTMLDivElement>(null)
-  const [showPortfolio, setShowPortfolio] = useState<"engineering" | "music" | undefined>()
+  const [showPortfolio, setShowPortfolio] = useState<"engineering" | "music" | undefined>();
   const [showTechStack, setShowTechStack] = useState<boolean>(false);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <>
-      <div id="splash-container" className="h-screen w-full flex flex-col justify-center items-center">
+      <div id="splash-container" className="h-screen w-full py-12 pb-12 flex flex-col justify-center items-center">
         <div id="content-container"
           className="flex-1 min-h-[500px] max-h-[500px] w-full flex flex-col items-center justify-between text-center overflow-x-hidden object-contain">
           <div id="intro-box"
@@ -129,17 +129,17 @@ export default function Home() {
           <div id="portfolio-info-div"
             className="w-full md:max-w-[1080px] lg:max-w-[1200px]h-fit mt-12 flex flex-col items-center">
             <div
-              className="w-5/6 h-10 bg-sky-900 flex justify-around items-center ">
+              className="w-5/6 h-fit px-2 py-2 bg-sky-400/15 dark:bg-sky-900 flex justify-around items-center ">
               <div id="portfolio-tech-stack"
                 className="hover:cursor-pointer"
                 onClick={() => {
                   setShowTechStack(!showTechStack)
                 }}
               >
-                Portfolio Tech stack
+                Portfolio Tech stack {">"}
               </div>
               <div id="portfolio-github-link">
-                <a href="https://github.com/hjdjoo/personal-website">Portfolio Github Repo</a>
+                <a href="https://github.com/hjdjoo/personal-website">Portfolio Github Repo {">"}</a>
               </div>
             </div>
             <div id="portfolio-tech-stack-list"

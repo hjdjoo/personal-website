@@ -134,17 +134,17 @@ export default function DropDisplay(props: DropDisplayProps) {
           </div>
         </div>}
       <div id={`${projectName}-other-info-div`}
-        className="w-full">
+        className="w-full text-slate-950 dark:text-slate-200">
         <div
-          className="w-full h-8 bg-slate-800 flex justify-around items-center ">
+          className="w-full h-8 bg-indigo-300/30 dark:bg-slate-800 flex justify-around items-center ">
           <div id={`${projectName}-tech-stack`}
             className="hover:cursor-pointer"
             onClick={handleShowTechStack}
           >
-            Tech stack
+            Tech stack {">"}
           </div>
           <div id={`${projectName}-github-link`}>
-            <a href={`${githubRepo}`}>Github Repo</a>
+            <a href={`${githubRepo}`}>Github Repo {">"}</a>
           </div>
         </div>
         <div id={`${projectName}-tech-stack-list`}
@@ -152,7 +152,7 @@ export default function DropDisplay(props: DropDisplayProps) {
           ref={techStackDisplay} >
           {showTechStack &&
             <TechStackDisplay
-              className="z-50 max-w-full flex-1 flex justify-center flex-wrap bg-slate-500/30"
+              className="z-50 max-w-full flex-1 flex justify-center flex-wrap"
               projectName={projectName} techStack={techStack} />}
         </div>
       </div>

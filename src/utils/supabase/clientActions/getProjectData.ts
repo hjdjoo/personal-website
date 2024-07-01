@@ -15,7 +15,7 @@ export default async function getProjectData(category: "engineering" | "music"):
     .returns<Project[]>();
 
   return {
-    data: data.map((project: Project) => {
+    data: data ? data.map((project: Project) => {
 
       const { project_name, project_description, tech_stack, github_repo, project_data } = project;
 
@@ -37,7 +37,7 @@ export default async function getProjectData(category: "engineering" | "music"):
         githubRepo: github_repo,
         projectData: projectData,
       }
-    }),
+    }) : [],
     error: error
   }
 

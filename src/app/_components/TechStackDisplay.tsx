@@ -17,7 +17,7 @@ export default function TechStackDisplay(props: TechStackDisplayProps) {
   })
 
   return (
-    <div className={`${className}`}>
+    <div className={`${className} `}>
       {techDisplays}
     </div>
   )
