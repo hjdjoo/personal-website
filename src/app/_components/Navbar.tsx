@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useContext } from "react"
+import { useRef, useContext } from "react"
 import { lightIconSvg, darkIconSvg, homeIconSvg, } from "@/lib/icons";
 import Link from "next/link";
 
@@ -27,7 +27,6 @@ export default function Navbar() {
     };
     toggleDarkMode();
 
-    console.log("toggleDarkMode/localStorage.theme", localStorage.theme)
   }
 
   const homeIcon = homeIconSvg();
