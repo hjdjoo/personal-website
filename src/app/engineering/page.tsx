@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect } from "react";
 
 import DropDisplay from "@/app/_components/DropDisplay";
@@ -5,72 +7,8 @@ import DropDisplay from "@/app/_components/DropDisplay";
 import { gearIconSvg } from "@/lib/icons";
 import type { Project } from "@/types/client-types/types";
 
-// import { createClient } from "@/utils/supabase/client";
 import getProjectData from "@/utils/supabase/clientActions/getProjectData";
 
-
-// const defaultData: Array<Project | undefined> = [
-//   {
-//     projectName: "Beers Flower Shop",
-//     projectDescription: "E-commerce and business management application",
-//     projectData: [
-//       {
-//         fileType: "",
-//         src: "",
-//         fileDescription: "",
-//         altText: "",
-//       },
-//       {
-//         fileType: "",
-//         src: "",
-//         fileDescription: "",
-//         altText: "",
-//       },
-//     ]
-//   },
-//   {
-//     projectName: "Kmon",
-//     projectDescription: "Monitoring for K-Raft mode Kafka clusters",
-//     projectData: [
-//       {
-//         fileType: "",
-//         src: "",
-//         fileDescription: "",
-//         altText: "",
-//       },
-//       {
-//         fileType: "",
-//         src: "",
-//         fileDescription: "",
-//         altText: "",
-//       },
-//     ]
-//   },
-//   {
-//     projectName: "Swoop NYC",
-//     projectDescription: "Iteration on a NYC stooping project",
-//     projectData: [
-//       {
-//         fileType: "",
-//         src: "",
-//         fileDescription: "",
-//         altText: "",
-//       },
-//     ]
-//   },
-//   {
-//     projectName: "Systemazing",
-//     projectDescription: "AI-powered system design analysis tool",
-//     projectData: [
-//       {
-//         fileType: "",
-//         src: "",
-//         fileDescription: "",
-//         altText: "",
-//       },
-//     ],
-//   }
-// ]
 
 export default function EngineeringPage() {
 
@@ -80,17 +18,24 @@ export default function EngineeringPage() {
 
     (async () => {
       const { data, error } = await getProjectData("engineering")
-      setProjects([...data])
+
+
+      const beersFlowers = data.filter((project) => {
+        return project.projectName === "Beers Flower Shop"
+      });
+
+      const otherProjects = data.filter((project => { return project.projectName !== "Beers Flower Shop" }))
+
+      setProjects([...beersFlowers, ...otherProjects])
     })();
 
   }, [])
 
   const Projects = projects.length ? projects.map((project) => {
     return (
-
       <DropDisplay
         key={`${project.projectName!}-display`}
-        projectName={project.projectName} projectDescription={project.projectDescription} projectData={project.projectData} />
+        projectName={project.projectName} projectDescription={project.projectDescription} projectData={project.projectData} techStack={project.techStack} githubRepo={project.githubRepo} />
     )
   }) : [];
 
@@ -108,6 +53,14 @@ export default function EngineeringPage() {
         <div className="size-10 ml-4 my-auto">
           {gearIcon}
         </div>
+      </div>
+      <div id="download-resume"
+        className="bg-slate-400 px-2 py-2 rounded-lg transition duration-300 hover:translate-y-1 hover:bg-slate-500"
+      >
+        <a href="/darryl_joo_resume.pdf" download
+          className="font-bold">
+          Download Resume
+        </a>
       </div>
       <div id="project-display"
         className="h-auto w-5/6 flex flex-col justify-start items-center">

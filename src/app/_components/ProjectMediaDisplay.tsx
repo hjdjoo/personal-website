@@ -18,7 +18,7 @@ export default function ProjectMediaDisplay(props: ProjectMediaDisplayProps) {
     )
   }
   else return (
-    <div>
+    <div className="max-w-[350px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]">
       {fileType.includes("video") ? (
         <>
           <video controls width="100%" height="100%" preload="auto" src={src} >

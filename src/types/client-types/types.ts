@@ -1,6 +1,8 @@
 export interface Project {
   projectName: string,
   projectDescription: string,
+  techStack: string[],
+  githubRepo: string,
   projectData: Array<ProjectData | undefined>
 }
 

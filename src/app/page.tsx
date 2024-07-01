@@ -6,12 +6,16 @@ import { useState, useEffect, useRef } from "react";
 import EngineeringPage from "./engineering/page";
 import MusicPage from "./music/page";
 
+import TechStackDisplay from "./_components/TechStackDisplay";
 import { musicIconSvg, sweIconSvg } from "@/lib/icons";
+
+const techStack = ["NextJS", "React", "TypeScript", "TailwindCSS", "PostgreSQL"]
 
 export default function Home() {
 
   const portfolio = useRef<HTMLDivElement>(null)
   const [showPortfolio, setShowPortfolio] = useState<"engineering" | "music" | undefined>()
+  const [showTechStack, setShowTechStack] = useState<boolean>(false);
 
   useEffect(() => {
 
@@ -122,6 +126,30 @@ export default function Home() {
           >
             Back to Top
           </button>
+          <div id="portfolio-info-div"
+            className="w-full md:max-w-[1080px] lg:max-w-[1200px]h-fit mt-12 flex flex-col items-center">
+            <div
+              className="w-5/6 h-10 bg-sky-900 flex justify-around items-center ">
+              <div id="portfolio-tech-stack"
+                className="hover:cursor-pointer"
+                onClick={() => {
+                  setShowTechStack(!showTechStack)
+                }}
+              >
+                Portfolio Tech stack
+              </div>
+              <div id="portfolio-github-link">
+                <a href="https://github.com/hjdjoo/personal-website">Portfolio Github Repo</a>
+              </div>
+            </div>
+            <div id="portfolio-tech-stack-list"
+              className="z-20 mb-40 4min-h-full w-5/6 flex flex-col">
+              {showTechStack &&
+                <TechStackDisplay
+                  className="z-50 max-w-full flex-1 flex justify-center py-2 flex-wrap bg-slate-500/15"
+                  projectName="portfolio" techStack={techStack} />}
+            </div>
+          </div>
         </div>
       }
     </>

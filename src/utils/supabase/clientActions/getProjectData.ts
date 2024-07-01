@@ -11,13 +11,13 @@ export default async function getProjectData(category: "engineering" | "music"):
 
   const { data, error } = await supabase
     .from(`${category}_projects`)
-    .select("project_name, project_description, project_data(file_type, file_description, alt_text, src)")
+    .select("project_name, project_description, tech_stack, github_repo, project_data(file_type, file_description, alt_text, src)")
     .returns<Project[]>();
 
   return {
     data: data.map((project: Project) => {
 
-      const { project_name, project_description, project_data } = project;
+      const { project_name, project_description, tech_stack, github_repo, project_data } = project;
 
       const projectData = project_data.map((data) => {
         if (!data) return;
@@ -33,6 +33,8 @@ export default async function getProjectData(category: "engineering" | "music"):
       return {
         projectName: project_name,
         projectDescription: project_description,
+        techStack: tech_stack,
+        githubRepo: github_repo,
         projectData: projectData,
       }
     }),
