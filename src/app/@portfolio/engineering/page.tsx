@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 
-import DropDisplay from "@/app/_components/DropDisplay";
+// import DropDisplay from "@/app/engineering/_components/DropDisplay";
+import DropDisplay from "./_components/DropDisplay";
 
 import { gearIconSvg } from "@/lib/icons";
 import type { Project } from "@/types/client-types/types";

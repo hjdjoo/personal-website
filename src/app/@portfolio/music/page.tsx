@@ -2,6 +2,22 @@ import { constructionIconSvg } from "@/lib/icons"
 import { musicNoteIconSvg } from "@/lib/icons"
 
 
+/**
+ Music page should:
+
+ Display a splash with media quotes
+
+ Display a scrollable timeline.
+  Timeline will have interactive points at scaled distances for album releases and general events
+  Hovering on each point will display a dialogue with information for album (streaming, info, etc);
+
+  Dialogue {
+    albumName: string
+
+  }
+
+ */
+
 export default function MusicPage() {
 
 
@@ -18,12 +34,6 @@ export default function MusicPage() {
         <div className="size-10 ml-4 my-auto">
           {musicNoteIcon}
         </div>
-      </div>
-      <p className="text-lg">X_x</p>
-      <br />
-      <h1 className="text-2xl text-center">This page is under construction!</h1>
-      <div className="size-32 my-12">
-        {constructionIcon}
       </div>
     </div>
   )

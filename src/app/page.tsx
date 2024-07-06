@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 // import Link from "next/link";
 
-import EngineeringPage from "./engineering/page";
-import MusicPage from "./music/page";
+import EngineeringPage from "./@portfolio/engineering/page";
+import MusicPage from "./@portfolio/music/page";
 
-import TechStackDisplay from "./_components/TechStackDisplay";
+import TechStackDisplay from "./@portfolio/engineering/_components/TechStackDisplay";
 import { musicIconSvg, sweIconSvg } from "@/lib/icons";
 
 const techStack = ["NextJS", "React", "TypeScript", "TailwindCSS", "PostgreSQL"]

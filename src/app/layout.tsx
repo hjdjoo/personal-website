@@ -14,13 +14,15 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Darryl Joo",
-  description: "Darryl's personal website",
+  description: "Hee Je (Darryl) Joo's personal website for music and engineering",
 };
 
 export default function RootLayout({
   children,
+  portfolio,
 }: Readonly<{
   children: React.ReactNode;
+  portfolio: React.ReactNode
 }>) {
 
   const userAgent = headers().get("user-agent") || "";
@@ -40,6 +42,7 @@ export default function RootLayout({
             <Navbar />
             <main id="main" className={`flex min-h-fit max-w-screen ${mobileCheck ? "pt-20" : ""} flex-col items-center justify-center px-6 md:px-24 dark:text-stone-100 bg-fixed bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800`}>
               {children}
+              {portfolio}
             </main>
             <Footer />
           </DarkModeProvider>
