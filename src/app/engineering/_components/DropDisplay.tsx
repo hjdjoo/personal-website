@@ -7,7 +7,7 @@ import { nextButtonSvg, prevButtonSvg } from "@/lib/icons";
 import { Project } from "@/types/client-types/types";
 
 import ProjectMediaDisplay from "./ProjectMediaDisplay";
-import TechStackDisplay from "./TechStackDisplay";
+import TechStackContainer from "../_containers/TechStackContainer";
 
 import getComponentSize from "@/utils/actions/getComponentSize";
 
@@ -24,26 +24,15 @@ export default function DropDisplay(props: DropDisplayProps) {
   /** Refs and States **/
   const projectBox = useRef<HTMLDivElement>(null);
   const gallery = useRef<HTMLUListElement>(null);
-  const techStackDisplay = useRef<HTMLDivElement>(null);
 
   const [dropdownStatus, setDropdownStatus] = useState<"hover" | "closed" | "open" | "opening" | "closing">("closed");
-
-  const [showTechStack, setShowTechStack] = useState<boolean>(false);
-  const [techStackOpen, setTechStackOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (!showTechStack) return;
-    setTimeout(() => {
-      setTechStackOpen(showTechStack)
-    }, 100)
-
-  }, [showTechStack])
 
   /** SVG Icons **/
   const nextButton = nextButtonSvg();
   const prevButton = prevButtonSvg();
 
   /* Other components and utility functions */
+  // ProjectMediaDisplay returns an image component or a video component depending on the type of resource.
   const projectMedia = projectData.map((data, idx) => {
     if (!data) return;
     return (
@@ -85,19 +74,6 @@ export default function DropDisplay(props: DropDisplayProps) {
         setDropdownStatus("closed");
       }, 300);
     }
-  }
-
-  const handleShowTechStack = () => {
-
-    if (!showTechStack && !techStackOpen) {
-      setShowTechStack(!showTechStack);
-      return;
-    } else if (showTechStack && techStackOpen) {
-      setTechStackOpen(!techStackOpen);
-      setTimeout(() => {
-        setShowTechStack(!showTechStack);
-      }, 300);
-    };
   }
 
   const handleBack = () => {
@@ -163,30 +139,7 @@ export default function DropDisplay(props: DropDisplayProps) {
               </div>}
           </div>
         </div>}
-      <div id={`${projectName}-other-info-div`}
-        className="w-full text-slate-950 dark:text-slate-200">
-        <div
-          className="w-full h-10 bg-indigo-300/30 dark:bg-slate-800 flex justify-around items-center ">
-          <div id={`${projectName}-tech-stack`}
-            className="text-xs sm:text-sm md:text-md hover:cursor-pointer transition duration-300 hover:translate-y-[2px]"
-            onClick={handleShowTechStack}
-          >
-            View Tech Stack {">"}
-          </div>
-          <div id={`${projectName}-github-link`} className="text-xs sm:text-sm md:text-md transition duration-300 hover:translate-y-[2px]">
-            <a href={`${githubRepo}`}>View Github Repo {">"}</a>
-          </div>
-        </div>
-        <div id={`${projectName}-tech-stack-list`}
-          className="z-20 min-h-full flex flex-col"
-          ref={techStackDisplay}
-        >
-          {showTechStack &&
-            <TechStackDisplay
-              className={`z-50 max-w-full flex-1 flex justify-center flex-wrap py-1 italic text-sm bg-slate-300/15 transition-opacity ease-in duration-100 ${showTechStack ? "" : "hidden"} ${techStackOpen ? "opacity-100" : "opacity-0"}`}
-              projectName={projectName} techStack={techStack} />}
-        </div>
-      </div>
+      <TechStackContainer projectName={projectName} techStack={techStack} githubRepo={githubRepo}></TechStackContainer>
     </>
   )
 }

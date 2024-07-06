@@ -1,10 +1,8 @@
-
 interface TechStackDisplayProps {
   className: string,
   projectName: string,
   techStack: string[],
 }
-
 
 export default function TechStackDisplay(props: TechStackDisplayProps) {
 
