@@ -16,10 +16,6 @@ export default function Footer() {
       >
         <Link href="/">Back to Top</Link>
       </div>
-      <div id="portfolio-tech-stack-div"
-        className="w-full">
-        <TechStackContainer projectName="Darryl's Personal Website" techStack={portfolioTechStack} githubRepo={portfolioGithub} />
-      </div>
       <div id="contact-box"
         className="my-10"
       >
@@ -27,6 +23,10 @@ export default function Footer() {
           href="mailto:joo.darryl@gmail.com"
           className="underline"
         >Contact Me {">"}</a>
+      </div>
+      <div id="portfolio-tech-stack-div"
+        className="w-full">
+        <TechStackContainer projectName="Darryl's Personal Website" techStack={portfolioTechStack} githubRepo={portfolioGithub} />
       </div>
     </div>
   )

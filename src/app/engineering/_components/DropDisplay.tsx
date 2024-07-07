@@ -61,7 +61,6 @@ export default function DropDisplay(props: DropDisplayProps) {
   }
   /* handler functions */
   const handleClick = () => {
-
     if (dropdownStatus === "hover") {
       setDropdownStatus("opening");
       setTimeout(() => {
@@ -76,6 +75,22 @@ export default function DropDisplay(props: DropDisplayProps) {
     }
   }
 
+  const handleTouch = () => {
+    if (dropdownStatus === "closed") {
+      setDropdownStatus("opening");
+      setTimeout(() => {
+        setDropdownStatus("open")
+      }, 300);
+    }
+    if (dropdownStatus === "open") {
+      setDropdownStatus("closing")
+      setTimeout(() => {
+        setDropdownStatus("closed");
+      }, 300);
+    }
+  }
+
+
   const handleBack = () => {
     const { width } = getComponentSize(projectBox.current!);
     gallery.current?.scrollBy({ left: -width, top: 0, behavior: "smooth" });
@@ -87,11 +102,14 @@ export default function DropDisplay(props: DropDisplayProps) {
   }
 
 
+  console.log(dropdownStatus)
+
   return (
     <>
       <div id={`${projectName}-drop-display`}
         className={`relative mt-8 w-full l flex flex-col justify-center rounded-sm  hover:cursor-pointer
         bg-gradient-to-r from-30%  from-slate-300 to-slate-100 dark:bg-gradient-to-r dark:from-30% dark:from-indigo-950  dark:to-sky-950`}
+        onTouchStart={handleTouch}
         onClick={handleClick}
         onMouseEnter={() => {
           if (dropdownStatus === "open") return;
@@ -114,7 +132,7 @@ export default function DropDisplay(props: DropDisplayProps) {
           </div>
           <div className="flex flex-2 text-xs px-6 sm:text-sm lg:text-lg mt-auto mb-auto ml-auto mr-3 font-thin">
             {projectDescription}
-            <div className={`size-4 mb-auto ml-auto lg:ml-4 lg:mt-auto ${dropdownStatus !== "closed" || "hover" ? "transition duration-100 rotate-90" : "transition duration-100 rotate-0"}`} >
+            <div className={`size-4 mb-auto ml-auto lg:ml-4 lg:mt-auto ${dropdownStatus !== ("closed" || "hover") ? "transition duration-100 rotate-90" : "transition duration-100 rotate-0"}`} >
               {nextButton}
             </div>
           </div>

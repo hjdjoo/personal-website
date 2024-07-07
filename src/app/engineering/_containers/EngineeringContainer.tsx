@@ -1,22 +1,15 @@
 import DropDisplay from "../_components/DropDisplay";
 
-import getProjectData from "@/utils/supabase/clientActions/getProjectData";
+import type { Project } from "@/types/client-types/types";
 
-export default async function EngineeringContainer({ children }: { children: React.ReactNode }) {
+interface EngineeringContainerProps {
+  projects: Project[]
+  children: React.ReactNode
+}
 
-  const { data, error } = await getProjectData("engineering");
+export default async function EngineeringContainer(props: EngineeringContainerProps) {
 
-  if (error) {
-    throw new Error("Error while querying db")
-  }
-
-  const beersFlowers = data.filter((project) => {
-    return project.projectName === "Beers Flower Shop"
-  });
-
-  const otherProjects = data.filter((project => { return project.projectName !== "Beers Flower Shop" }))
-
-  const projects = beersFlowers.concat(otherProjects);
+  const { projects } = props;
 
   const ProjectDisplays = projects.length ? projects.map((project) => {
     return (
@@ -30,7 +23,7 @@ export default async function EngineeringContainer({ children }: { children: Rea
     <div id="engineering-page"
       className="h-3/4 w-full max-w-screen
       md:max-w-[1080px] lg:max-w-[1200px] flex flex-col items-center justify-center py-12 lg:px-12">
-      {children}
+      {props.children}
       {ProjectDisplays}
     </div>
   )

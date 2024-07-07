@@ -43,7 +43,7 @@ export default function RootLayout({
         <body className={dmSans.className}>
           <DarkModeProvider>
             <Navbar />
-            <main id="main" className={`flex min-h-fit max-w-screen ${mobileCheck ? "pt-20" : ""} flex-col items-center justify-center px-6 md:px-24 dark:text-stone-100 bg-fixed bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800`}>
+            <main id="main" className={`flex min-h-fit max-w-screen ${mobileCheck ? "pt-20" : ""} flex-col items-center justify-center px-6 md:px-24 dark:text-stone-100 bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800`}>
               <MainContainer>
                 {children}
                 {portfolio}

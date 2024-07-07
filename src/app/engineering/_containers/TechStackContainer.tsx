@@ -57,7 +57,7 @@ export default function TechStackContainer(props: TechStackProps) {
           {projectName === "Darryl's Personal Website" ? "View Portfolio Tech Stack >" : "View Tech Stack >"}
         </div>
         <div id={`${projectName}-github-link`} className="text-xs sm:text-sm md:text-md transition duration-300 hover:translate-y-[2px]">
-          <a href={`${githubRepo}`}>View Github Repo {">"}</a>
+          <a href={`${githubRepo}`}>Visit Github Repo {">"}</a>
         </div>
       </div>
       <div id={`${projectName}-tech-stack-list`}
