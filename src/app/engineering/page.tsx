@@ -1,72 +1,28 @@
-"use client"
-
-import { useState, useEffect } from "react";
-
-import DropDisplay from "@/app/_components/DropDisplay";
-
-import { gearIconSvg } from "@/lib/icons";
-import type { Project } from "@/types/client-types/types";
-
+import PortfolioHeader from "../_components/PortfolioHeader";
+import EngineeringContainer from "./_containers/EngineeringContainer";
 import getProjectData from "@/utils/supabase/clientActions/getProjectData";
 
+export default async function EngineeringPage() {
 
-export default function EngineeringPage() {
+  const { data, error } = await getProjectData("engineering");
 
-  const [projects, setProjects] = useState<Project[]>([]);
+  if (error) {
+    throw new Error("Error while querying db")
+  }
 
-  useEffect(() => {
+  const beersFlowers = data.filter((project) => {
+    return project.projectName === "Beers Flower Shop"
+  });
 
-    (async () => {
-      try {
-        const { data, error } = await getProjectData("engineering");
+  const otherProjects = data.filter((project => { return project.projectName !== "Beers Flower Shop" }))
 
-        if (error) {
-          throw new Error("Error while querying db")
-        }
-
-        const beersFlowers = data.filter((project) => {
-          return project.projectName === "Beers Flower Shop"
-        });
-
-        const otherProjects = data.filter((project => { return project.projectName !== "Beers Flower Shop" }))
-
-        setProjects([...beersFlowers, ...otherProjects]);
-      }
-      catch (e) {
-        console.error(e);
-      }
-    })();
-
-  }, [])
-
-  const Projects = projects.length ? projects.map((project) => {
-    return (
-      <DropDisplay
-        key={`${project.projectName!}-display`}
-        projectName={project.projectName} projectDescription={project.projectDescription} projectData={project.projectData} techStack={project.techStack} githubRepo={project.githubRepo} />
-    )
-  }) : [];
-
-  const gearIcon = gearIconSvg();
+  const projects = beersFlowers.concat(otherProjects);
 
   return (
-    <div id="engineering-page"
-      className="h-3/4 w-full max-w-screen
-      md:max-w-[1080px] lg:max-w-[1200px] flex flex-col items-center justify-center py-12 lg:px-12">
-      <div id="engineering-page-title"
-        className="flex my-8">
-        <h1 className="text-2xl font-bold my-auto">
-          Engineering Projects
-        </h1>
-        <div className="size-10 ml-4 my-auto">
-          {gearIcon}
-        </div>
-      </div>
-
-      <div id="project-display"
-        className="h-auto w-5/6 flex flex-col justify-start items-center">
-        {Projects}
-      </div>
-    </div>
+    <>
+      <EngineeringContainer projects={projects}>
+        <PortfolioHeader category="engineering" />
+      </EngineeringContainer>
+    </>
   )
 }

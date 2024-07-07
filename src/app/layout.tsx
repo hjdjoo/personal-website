@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import DarkModeProvider from "@/contexts/DarkMode";
+
 import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
-import DarkModeProvider from "@/contexts/DarkMode";
+import MainContainer from "./_containers/MainContainer";
+// import RouteProvider from "@/contexts/RouteContext";
 import { headers } from "next/headers";
 import { isMobile } from "@/utils/actions/isMobile";
 
@@ -14,13 +17,15 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Darryl Joo",
-  description: "Darryl's personal website",
+  description: "Hee Je (Darryl) Joo's personal website for music and engineering",
 };
 
 export default function RootLayout({
   children,
+  portfolio,
 }: Readonly<{
   children: React.ReactNode;
+  portfolio: React.ReactNode
 }>) {
 
   const userAgent = headers().get("user-agent") || "";
@@ -34,12 +39,15 @@ export default function RootLayout({
         }}>
         </script>
       </head>
-      <html lang="en" suppressHydrationWarning={true}>
+      <html lang="en" suppressHydrationWarning={true} style={{ scrollBehavior: "smooth" }}>
         <body className={dmSans.className}>
           <DarkModeProvider>
             <Navbar />
-            <main id="main" className={`flex min-h-fit max-w-screen ${mobileCheck ? "pt-20" : ""} flex-col items-center justify-center px-6 md:px-24 dark:text-stone-100 bg-fixed bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800`}>
-              {children}
+            <main id="main" className={`flex min-h-fit max-w-screen ${mobileCheck ? "pt-20" : ""} flex-col items-center justify-center px-6 md:px-24 dark:text-stone-100 bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800`}>
+              <MainContainer>
+                {children}
+                {portfolio}
+              </MainContainer>
             </main>
             <Footer />
           </DarkModeProvider>
