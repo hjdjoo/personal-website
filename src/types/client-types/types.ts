@@ -12,3 +12,20 @@ export interface ProjectData {
   altText: string,
   src: string,
 }
+
+export interface MusicEvent {
+  id: number,
+  name: string,
+  description: string,
+  date: string
+}
+
+export interface MusicEventResource {
+  id: number,
+  eventId: number,
+  name: string,
+  type: string,
+  description: string,
+  src: string,
+  altText: string
+}

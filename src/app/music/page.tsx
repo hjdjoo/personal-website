@@ -1,8 +1,9 @@
-import { musicNoteIconSvg } from "@/lib/icons"
+"use server"
 
 import MusicContainer from "./_container/MusicContainer";
 import MusicSplash from "./_components/MusicSplash";
 import PortfolioHeader from "../_components/PortfolioHeader";
+import { vollkorn } from "@/lib/fonts";
 
 /**
  Music page should:
@@ -13,15 +14,15 @@ import PortfolioHeader from "../_components/PortfolioHeader";
  Display a scrollable timeline.
   Timeline will have interactive points at scaled distances for album releases and other general events
     Expected db structure: 
-    music_event {
+    album {
       id: int8(serial)
       name: text
       description: text
       date: text
     }
-    music_event_resource {
+    album_resource {
       id: int8(serial)
-      eventId: int8 //fk - public.music_events.id
+      eventId: int8 //fk - public.albums.id
       name: text
       type: text
       description: text
@@ -30,14 +31,15 @@ import PortfolioHeader from "../_components/PortfolioHeader";
     }
 
   Hovering on each point will display a dialogue box.
+
   Dialogue {
-    eventId: music_events.id
-    eventName: music_events.name
+    albumId: album.id
+    albumName: album.name
   };
 
-  And the dialogue box should make a fetch for relevant info for its child components (Mini-player, press links, highlights, other media);
+  And the dialogue box should make a fetch (or middleware can fetch server-side for /music routes) for relevant info for its child components (Mini-player, press links, highlights, other media);
 
-  from("music_event_resources")
+  from("album_resources")
   .select("*") : Array<MusicEventResources>
 
   Use the filetype to filter data and render appropriately.
@@ -50,12 +52,13 @@ export default async function MusicPage() {
   // getMusicEvents: fetches db_data and returns as clientData;
   // passes data to MusicContainer as events;
 
-
   return (
     <>
-      <MusicContainer>
-        <PortfolioHeader category="music" />
-        <MusicSplash />
+      <MusicContainer className="max-w-screen min-h-screen flex-1 flex flex-col items-center justify-center py-12 mt-24">
+        <div id="splash-font-provider"
+          className={`flex-1 flex flex-col ${vollkorn.className}`}>
+          <MusicSplash />
+        </div>
       </MusicContainer>
     </>
   )
