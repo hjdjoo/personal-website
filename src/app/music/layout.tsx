@@ -1,9 +1,9 @@
-export default function MusicLayout({ children, album }: { children: React.ReactNode, album: React.ReactNode }) {
+export default function MusicLayout({ children, timeline }: { children: React.ReactNode, timeline: React.ReactNode }) {
 
   return (
     <>
       {children}
-      {album}
+      {timeline}
     </>
   )
 

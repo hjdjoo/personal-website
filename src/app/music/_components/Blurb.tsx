@@ -18,7 +18,7 @@ export default function Blurb(props: BlurbProps) {
         </p>
       </div>
       <div id={`${name}-blurb-source`}
-        className="mt-8 self-end pr-4 italic text-right">
+        className="mt-8 self-end pr-16 italic text-right">
         <a href={src}>
           {`- ${name}`}
         </a>

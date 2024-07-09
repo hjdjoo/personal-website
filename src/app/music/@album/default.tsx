@@ -1,3 +1,3 @@
-export default function MusicDefault() {
+export default function AlbumDefault() {
   return null;
 }

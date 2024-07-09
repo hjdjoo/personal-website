@@ -3,3 +3,17 @@ export interface BlurbData {
   blurb: string
   src: string
 }
+
+export interface AlbumData {
+  id: number
+  name: string,
+  details: string,
+  releaseDate: string
+}
+
+export interface EventData {
+  id: number,
+  name: string,
+  blurb: string,
+  date: string
+}

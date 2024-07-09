@@ -1,17 +1,17 @@
-import Timeline from "../_components/Timeline";
+import { usePathname } from "next/navigation";
 
 interface MusicContainerProps {
   children: React.ReactNode,
   className: string
 }
 
+// wrapping children in a client component for more interactive ux
 export default function MusicContainer({ children, className }: MusicContainerProps) {
 
   return (
     <div id="music-page"
       className={`${className}`}>
       {children}
-      <Timeline />
     </div>
   )
 }
