@@ -1,5 +1,3 @@
-import { usePathname } from "next/navigation";
-
 interface MusicContainerProps {
   children: React.ReactNode,
   className: string

@@ -21,8 +21,8 @@ export default function RootLayout({
   children,
   portfolio,
 }: Readonly<{
-  children: React.ReactNode;
-  portfolio: React.ReactNode
+  children: React.ReactNode,
+  portfolio: React.ReactNode,
 }>) {
 
   const userAgent = headers().get("user-agent") || "";

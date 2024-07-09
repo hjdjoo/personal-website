@@ -1,6 +1,8 @@
 "use client"
 
 import Blurb from "./Blurb"
+import Image from "next/image"
+import Link from "next/link"
 import { BlurbData } from "../types/element-types"
 
 const blurbs: BlurbData[] = [
@@ -35,6 +37,18 @@ export default function MusicSplash() {
       className={`flex-1 flex flex-col h-full justify-between items-center`}
     >
       {Blurbs}
+      <div
+        className="relative w-full h-[450px] md:h-[600px] lg:h-[600px] flex flex-col mt-24 mb-10"
+      >
+        <Image
+          className="flex-1 opacity-85 dark:opacity-85"
+          src="/BWQ-Mask-Transparent.png" alt="BWQ Mask Image"
+          fill
+          quality={100}
+          style={{
+            objectFit: "contain"
+          }} />
+      </div>
     </div>
   )
 }
