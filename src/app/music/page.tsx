@@ -132,7 +132,7 @@ export default async function MusicPage() {
     }
   })
 
-  console.log(albumHash);
+  // console.log(albumHash);
 
   return (
     <>
@@ -142,10 +142,10 @@ export default async function MusicPage() {
           <MusicSplash />
         </div>
         <div
-          className="relative w-full h-[450px] md:h-[600px] lg:h-[600px] flex flex-col mt-24 mb-[20rem]"
+          className="relative w-full h-[450px] md:h-[600px] lg:h-[600px] flex flex-col mt-24 mb-10"
         >
           <Image
-            className="flex-1 opacity-85 dark:opacity-65"
+            className="flex-1 opacity-85 dark:opacity-75"
             src="/BWQ-Mask-Transparent.png" alt="BWQ Mask Image"
             fill
             quality={100}
@@ -153,14 +153,18 @@ export default async function MusicPage() {
               objectFit: "contain"
             }} />
         </div>
-        <div id="music-page-links">
-          {/* <Link href="/music/discography">The Music</Link> */}
-          <Link href="/music/timeline">The Story</Link>
+        <div id="music-page-links"
+          className={`flex w-full space-between ${vollkorn.className}`}>
+          <div
+            className="py-2 mx-1 rounded-lg text-center flex-1 border border-s-white italic text-sm">
+            <Link href="/music/discography">the music</Link>
+          </div>
+          <div
+            className="py-2 mx-1 rounded-lg text-center flex-1 border border-s-white italic text-sm">
+            <Link href="/music/timeline">the story</Link>
+          </div>
         </div>
         {/* Have timeline and music players as slots. allow user to nav to timeline or music player. Timeline is collapsible "about" page. */}
-        <div id="timeline-container">
-          <Timeline events={events} albums={albumHash} />
-        </div>
       </MusicContainer>
     </>
   )
