@@ -44,7 +44,7 @@ export default function MusicContainer({ className, albums, events }: MusicConta
     // good old DOM manipulation to set slot visibility
     const discogSlot = document.getElementById("discography-slot")
 
-    console.log(discogSlot);
+    // console.log(discogSlot);
     if (!discogSlot) return;
     discogSlot.hidden = !discogSlot.hidden;
 

@@ -7,7 +7,7 @@ export default async function getEvents() {
 
   const { data, error } = await supabase
     .from("music_events")
-    .select("*, event_resources(id)")
+    .select("*, event_resources(*)")
     .returns<Music_Event[]>();
 
   const clientData = data ? data.map(event => {

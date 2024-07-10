@@ -24,6 +24,7 @@ export interface Album {
   name: string,
   description: string,
   releaseDate: string
+  albumResources?: AlbumResource[]
 }
 
 export interface MusicEvent {

@@ -13,7 +13,7 @@ const blurbs: BlurbData[] = [
     src: "https://www.popmatters.com/project-bwq-phosphene-premiere-2591469573.html"
   },
   {
-    name: "MetalheadReviews",
+    name: "MetalheadCommunity",
     blurb: "... Simply irresistable.",
     src: "https://metalheadcommunity.com/bwq-up-song-review/"
   },

@@ -5,9 +5,7 @@ export default function MusicLayout({ children, discography }: { children: React
   return (
     <>
       {children}
-      <section>
-        {discography}
-      </section>
+      {discography}
     </>
   )
 }
