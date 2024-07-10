@@ -4,7 +4,7 @@ import { ForwardedRef, forwardRef } from "react"
 import Blurb from "./Blurb"
 import Image from "next/image"
 import Link from "next/link"
-import { BlurbData } from "../types/element-types"
+import { BlurbData } from "@/types/client-types/types"
 
 const blurbs: BlurbData[] = [
   {

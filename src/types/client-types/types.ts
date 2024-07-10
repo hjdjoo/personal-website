@@ -13,6 +13,12 @@ export interface ProjectData {
   src: string,
 }
 
+export interface BlurbData {
+  name: string,
+  blurb: string,
+  src: string
+}
+
 export interface Album {
   id: number,
   name: string,

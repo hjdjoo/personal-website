@@ -1,4 +1,4 @@
-import type { BlurbData } from "../types/element-types"
+import { BlurbData } from "@/types/client-types/types";
 
 interface BlurbProps {
   data: BlurbData
