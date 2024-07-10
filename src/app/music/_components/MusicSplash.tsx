@@ -1,5 +1,6 @@
 "use client"
 
+import { ForwardedRef, forwardRef } from "react"
 import Blurb from "./Blurb"
 import Image from "next/image"
 import Link from "next/link"
@@ -23,7 +24,7 @@ const blurbs: BlurbData[] = [
   }
 ]
 
-export default function MusicSplash() {
+export const MusicSplash = forwardRef(function MusicSplash(_props, ref: ForwardedRef<HTMLDivElement>) {
 
   const Blurbs = blurbs.map((data, idx) => {
     return (
@@ -34,6 +35,7 @@ export default function MusicSplash() {
 
   return (
     <div id="music-splash"
+      ref={ref}
       className={`flex-1 flex flex-col h-full justify-between items-center`}
     >
       {Blurbs}
@@ -51,4 +53,4 @@ export default function MusicSplash() {
       </div>
     </div>
   )
-}
+})

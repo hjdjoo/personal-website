@@ -1,5 +1,5 @@
 import { useState, forwardRef, ForwardedRef } from "react";
-import { EventData, AlbumData } from "../../types/element-types";
+import { MusicEvent, Album } from "@/types/client-types/types";
 import { Dialogue } from "./Dialogue";
 
 interface TimelineBarProps {
@@ -10,18 +10,19 @@ interface TimelineBarProps {
 interface TimelineMarkerProps {
   position: string // defined as a CSS% style for position from top.
   dialoguePosition: string
-  event: EventData
-  album: AlbumData | undefined
+  event: MusicEvent
+  album?: Album
   // children: React.ReactNode
 }
 
 // forwarding ref ahead of time - should be helpful to have a reference to the bar itself... May not actually need it, but just in case.
-export const TimelineBar = forwardRef(function TimelineBar({ children }: TimelineBarProps, ref: ForwardedRef<HTMLDivElement>) {
+export const TimelineBar = forwardRef(function TimelineBar({ className, children }: TimelineBarProps, ref: ForwardedRef<HTMLDivElement>) {
 
   return (
     <div
+      id="timeline-bar"
       ref={ref}
-      className="absolute flex-1 flex flex-col items-center h-full">
+      className={`absolute flex-1 flex flex-col items-center h-full ${className}`}>
       <svg
         id="timeline-bar"
         className="flex-1"
@@ -98,20 +99,24 @@ export const TimelineMarker = ({ dialoguePosition, position, event, album }: Tim
         onClick={handleMarkerClick}
         className={`absolute w-full max-h-fit flex flex-col items-center`}>
         <div id={`dot-${position}`}
-          className={`absolute size-6 flex-1 rounded-full bg-indigo-950 dark:bg-slate-200 hover:cursor-pointer `}>
+          className={`absolute size-4 flex-1 rounded-full bg-indigo-950 dark:bg-slate-200 hover:cursor-pointer`}>
+        </div>
+        <div id={`dot-animation-${position}`}
+          className={`absolute size-6 -top-1 flex-1 rounded-full bg-indigo-950 dark:bg-slate-200 hover:cursor-pointer animate-pulse`}>
         </div>
       </div>
       <div
+        id={`${position}-svg-line-div`}
         style={{
           top: position
         }}
-        className={`absolute w-full max-h-fit -z-10 ${dialogueState === "opening" && "animate-appear"} ${dialogueState === "closing" && "animate-fade"}`}
+        className={`absolute w-full max-h-fit -z-10 ${dialogueState === "opening" && "animate-appear"} ${dialogueState === "closing" && "  animate-fade"}`}
         hidden={dialogueState === "closed"}
       >
         <svg stroke="currentcolor"
           strokeWidth="2px"
-          className="">
-          <line x1="50%" y1="7%" x2={dialoguePosition === "left" ? "90%" : "10%"} y2="30%" />
+          className="w-full">
+          <line x1="50%" y1="7%" x2={dialoguePosition === "left" ? "80%" : "20%"} y2="27%" />
         </svg>
       </div>
       <div
@@ -119,7 +124,7 @@ export const TimelineMarker = ({ dialoguePosition, position, event, album }: Tim
         style={{
           top: position
         }}
-        className={`absolute w-full delay-75 ${dialogueState === "opening" && "animate-appear"} ${dialogueState === "closing" && "animate-fade"}`}>
+        className={`absolute w-full delay-75 ${dialogueState === "opening" && "animate-appear"} ${dialogueState === "closing" && "delay-75 animate-fade"}`}>
         <Dialogue event={event} album={album} dialoguePosition={dialoguePosition} />
       </div>
     </>

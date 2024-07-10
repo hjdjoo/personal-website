@@ -1,25 +1,25 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import { EventData, AlbumData } from "../types/element-types"
+import { Album, MusicEvent } from "@/types/client-types/types";
 import { TimelineBar, TimelineMarker } from "./_subComponents/TimelineComponents";
 
-
 interface TimelineProps {
-  events: EventData[]
-  albums: Array<AlbumData | undefined>
+  events: MusicEvent[]
+  albums: Array<Album | undefined>
+  animation?: string,
 }
 
-export default function Timeline(props: TimelineProps) {
-
-  const { events, albums } = props;
+export default function Timeline({ events, albums, animation }: TimelineProps) {
 
   const timelineBar = useRef<HTMLDivElement>(null)
 
   const startTime = Date.parse(events[0].date);
   const totalTime = Date.parse(events[events.length - 1].date) - Date.parse(events[0].date);
 
-  const getMarkerPosition = (event: EventData) => {
+  const timelineHeight = `${totalTime / 1000 / 3600 / 25}px`;
+
+  const getMarkerPosition = (event: MusicEvent) => {
 
     const pct = Math.floor(parseFloat(((Date.parse(event.date) - startTime) / totalTime).toFixed(2)) * 100).toString();
 
@@ -40,18 +40,18 @@ export default function Timeline(props: TimelineProps) {
     return (
       <div key={idx + 1}
         id={`timeline-marker-${idx + 1}`}
-        style={{
-          top: markerPosition
-        }}
         className={`w-full`}>
-        <p
+        <div id={`event-name-${idx + 1}`}
           style={{
             top: markerPosition
           }}
-          className={`absolute ${left ? "left-0" : "right-0"} flex flex-col items-center -z-10`}
-        >
-          {event.name}
-        </p>
+          className={`absolute w-full`}>
+          <p
+            className={`absolute w-[40%] text-xs sm:text-sm md:text-md flex flex-col ${left ? "items-end text-right" : "items-start"} -z-10 ${left ? "left-0" : "right-0"}`}
+          >
+            {event.name}
+          </p>
+        </div>
         <TimelineMarker
           position={markerPosition} dialoguePosition={dialoguePosition} event={event} album={albums[idx]}>
         </TimelineMarker>
@@ -62,14 +62,17 @@ export default function Timeline(props: TimelineProps) {
 
   return (
     <div id="music-timeline-div"
-      className="min-h-screen flex flex-col items-center"
+      className={`flex flex-col items-center mb-36 ${animation}`}
     >
       <p id="timeline-head"
         className="my-10 text-2xl">So far...</p>
       <div id="timeline"
+        style={{
+          height: timelineHeight
+        }}
         className="relative min-h-screen w-0 z-10 flex flex-col items-center py-6"
       >
-        <TimelineBar className="" ref={timelineBar} >
+        <TimelineBar className="w-[450px] md:w-[600px]" ref={timelineBar} >
           {timelineMarkers}
         </TimelineBar>
       </div>

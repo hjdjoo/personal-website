@@ -13,6 +13,13 @@ export interface ProjectData {
   src: string,
 }
 
+export interface Album {
+  id: number,
+  name: string,
+  description: string,
+  releaseDate: string
+}
+
 export interface MusicEvent {
   id: number,
   name: string,
@@ -20,12 +27,19 @@ export interface MusicEvent {
   date: string
 }
 
-export interface MusicEventResource {
+interface Resource {
   id: number,
-  eventId: number,
   name: string,
   type: string,
   description: string,
   src: string,
   altText: string
+}
+
+export interface AlbumResource extends Resource {
+  albumId: number
+}
+
+export interface EventResource extends Resource {
+  eventId: number
 }

@@ -46,3 +46,16 @@ export const demoEvents = [
     date: "4/31/2009"
   }
 ]
+
+
+
+// album_resource {
+//   id: int8(serial)
+//   eventId: int8 //fk - public.albums.id
+//   name: text
+//   type: text
+//   description: text
+//   src: text
+//   alt_text: text
+//   date: text
+// }

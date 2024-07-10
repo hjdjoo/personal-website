@@ -1,13 +1,13 @@
-"use client"
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+"use server"
+
 import MusicContainer from "./_containers/MusicContainer";
-import MusicSplash from "./_components/MusicSplash";
-import Timeline from "./_components/Timeline";
-import { vollkorn } from "@/lib/fonts";
-import { EventData, AlbumData } from "./types/element-types";
+import { demoAlbumData, demoEvents } from "./lib/demoData";
+// import { EventData, AlbumData } from "./types/element-types";
+import { AlbumResource, Album, MusicEvent, EventResource } from "@/types/client-types/types";
 import formatDate from "@/utils/actions/formatDate";
+
+import getAlbums from "@/utils/supabase/clientActions/getAlbums";
+import getEvents from "@/utils/supabase/clientActions/getEvents";
 
 /**
  Music page should:
@@ -48,7 +48,7 @@ import formatDate from "@/utils/actions/formatDate";
     eventName: event.name
   };
 
-  And the dialogue box should make a fetch (or middleware can fetch server-side for /music routes) for relevant info for its child components (Mini-player, press links, highlights, other media);
+  And the dialogue box could make a fetch (or middleware can fetch server-side for /music routes) for relevant info for its child components (Mini-player, press links, highlights, other media);
 
   from("album_resources")
   .select("*") : Array<MusicEventResources>
@@ -61,36 +61,32 @@ interface MusicPageProps {
   // children: React.ReactNode
 }
 
-export default function MusicPage() {
+export default async function MusicPage() {
 
-  const [showTimeline, setShowTimeline] = useState<boolean>(false);
-  const [showDiscography, setShowDiscography] = useState<boolean>(false);
+  const { data: events, error: eventErr } = await getEvents();
+  const { data: albums, error: albumErr } = await getAlbums();
 
-  const handleTimeline = () => {
 
-  }
+  events.sort((a, b) => {
+    return Date.parse(a.date) - Date.parse(b.date)
+  })
+  albums.sort((a, b) => {
+    return Date.parse(a.releaseDate) - Date.parse(b.releaseDate)
+  });
 
-  const handleDiscography = () => {
+  const albumHash = Array(events.length).fill(undefined);
 
-  }
-
+  events.forEach((event, idx) => {
+    if (event.date === albums[0].releaseDate) {
+      albumHash[idx] = albums.shift();
+    }
+  })
 
   return (
-    <div id="splash-font-provider"
-      className={`flex-1 flex flex-col ${vollkorn.className}`}>
-      <MusicSplash />
-      <div id="music-page-links"
-        className={`flex w-full space-between`}>
-        <div
-          className="py-2 mx-1 rounded-lg text-center flex-1 border border-current italic text-sm">
-          <button onClick={handleDiscography}>the music</button>
-        </div>
-        <div
-          className="py-2 mx-1 rounded-lg text-center flex-1 border border-current italic text-sm">
-          <button onClick={handleTimeline}>the story</button>
-        </div>
-      </div>
-
-    </div>
+    <>
+      <MusicContainer className="max-w-screen min-h-screen flex-1 
+flex flex-col items-center justify-center py-12 mt-24" events={events} albums={albumHash} />
+    </>
   )
 }
+

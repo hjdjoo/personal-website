@@ -1,12 +1,14 @@
 "use client"
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function MainContainer({ children }: { children: React.ReactNode }) {
 
   const path = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
+
     const portfolio = path.replace("/", "")
     const portfolioPage = document.getElementById(`${portfolio}-page`);
 
@@ -16,10 +18,10 @@ export default function MainContainer({ children }: { children: React.ReactNode 
       document.documentElement.scrollBy({
         top: portfolioPosition.top,
         behavior: "smooth"
-      })
+      });
     }
 
-  }, [path])
+  }, [path, router])
 
   return (
     <>
