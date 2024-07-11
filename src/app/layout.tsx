@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import DarkModeProvider from "@/contexts/DarkMode";
 
@@ -10,10 +9,8 @@ import MainContainer from "./_containers/MainContainer";
 import { headers } from "next/headers";
 import { isMobile } from "@/utils/actions/isMobile";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  display: "swap",
-});
+import { dmSans, vollkorn } from "@/lib/fonts";
+
 
 export const metadata: Metadata = {
   title: "Darryl Joo",
@@ -24,8 +21,8 @@ export default function RootLayout({
   children,
   portfolio,
 }: Readonly<{
-  children: React.ReactNode;
-  portfolio: React.ReactNode
+  children: React.ReactNode,
+  portfolio: React.ReactNode,
 }>) {
 
   const userAgent = headers().get("user-agent") || "";
@@ -40,10 +37,10 @@ export default function RootLayout({
         </script>
       </head>
       <html lang="en" suppressHydrationWarning={true} style={{ scrollBehavior: "smooth" }}>
-        <body className={dmSans.className}>
+        <body className={`${dmSans.className}`}>
           <DarkModeProvider>
             <Navbar />
-            <main id="main" className={`flex min-h-fit max-w-screen ${mobileCheck ? "pt-20" : ""} flex-col items-center justify-center px-6 md:px-24 dark:text-stone-100 bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800`}>
+            <main id="main" className={`flex min-h-fit max-w-screen flex-col items-center justify-center pb-24 px-6 md:px-24 ${mobileCheck ? "pt-20" : ""} bg-fixed dark:text-stone-100 bg-gradient-to-t from-slate-200 to-slate-100 dark:bg-gradient-to-t dark:from-indigo-950 from-25% dark:to-sky-800`}>
               <MainContainer>
                 {children}
                 {portfolio}

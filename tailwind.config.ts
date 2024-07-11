@@ -10,7 +10,9 @@ const config: Config = {
       animation: {
         "scroll-up": "scrollUp 12s cubic-bezier(0.55, 0, 0.2, 1) infinite",
         "drop-down": "dropDown 400ms ease-in-out forwards",
-        "close-up": "closeUp 400ms ease-in-out forwards"
+        "close-up": "closeUp 400ms ease-in-out forwards",
+        "appear": "appear 400ms ease-in-out forwards",
+        "fade": "fade 400ms ease-in-out forwards",
       },
       keyframes: {
         scrollUp: {
@@ -57,7 +59,23 @@ const config: Config = {
           "100%": {
             height: "0%"
           }
-        }
+        },
+        appear: {
+          "0%": {
+            opacity: "0%"
+          },
+          "100%": {
+            opacity: "100%"
+          }
+        },
+        fade: {
+          "0%": {
+            opacity: "100%"
+          },
+          "100%": {
+            opacity: "0%"
+          }
+        },
       },
     },
   },

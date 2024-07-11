@@ -12,3 +12,41 @@ export interface ProjectData {
   altText: string,
   src: string,
 }
+
+export interface BlurbData {
+  name: string,
+  blurb: string,
+  src: string
+}
+
+export interface Album {
+  id: number,
+  name: string,
+  description: string,
+  releaseDate: string
+  albumResources?: AlbumResource[]
+}
+
+export interface MusicEvent {
+  id: number,
+  name: string,
+  description: string,
+  date: string
+}
+
+interface Resource {
+  id: number,
+  name: string,
+  type: string,
+  description: string,
+  src: string,
+  altText: string
+}
+
+export interface AlbumResource extends Resource {
+  albumId: number
+}
+
+export interface EventResource extends Resource {
+  eventId: number
+}

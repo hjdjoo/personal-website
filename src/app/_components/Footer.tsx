@@ -10,11 +10,11 @@ export default function Footer() {
 
   return (
     <div id="footer-container"
-      className="bottom-0 pb-12 text-slate-900 bg-slate-200 dark:text-slate-200  dark:bg-indigo-950 w-full flex flex-col items-center">
+      className="bottom-0 py-12 text-slate-900 bg-slate-200 dark:text-slate-200  dark:bg-indigo-950 w-full flex flex-col items-center">
       <div id="back-to-top-link"
         className="my-8 underline"
       >
-        <Link href="/">Back to Top</Link>
+        <Link href="/">Back to Home</Link>
       </div>
       <div id="contact-box"
         className="my-10"

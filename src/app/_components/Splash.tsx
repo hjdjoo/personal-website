@@ -52,24 +52,30 @@ export default function Splash() {
           </div>
           <div id="buttons-container"
             className="w-full md:w-3/4 lg:w-1/2 mb-20 flex flex-row justify-between">
-            <div className="flex-1 flex flex-col items-center ml-1">
-              <Link href="/engineering" scroll={false}>
-                <div id="software-engineering-profile-div"
-                  className="size-24 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
+            <div id="engineering-portfolio-link-div"
+              className="flex-1 flex flex-col min-h-fit items-center mx-2">
+              <Link
+                className="border-2 border-slate-400 w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
+                href="/engineering" scroll={false}>
+                <div id="software-engineering-icon"
+                  className="size-20 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 >
                   {sweIcon}
-                  <p className="relative text-sm">Explore Engineering Projects</p>
                 </div>
+                <p className="text-xs">Explore Engineering Projects</p>
               </Link>
             </div>
-            <div className="flex-1 flex flex-col items-center mr-4">
-              <Link href="/music" scroll={false}>
+            <div id="music-portfolio-link-div"
+              className="flex-1 flex flex-col min-h-fit items-center mx-2">
+              <Link
+                className="border-2 border-slate-400 w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
+                href="/music" scroll={false}>
                 <div id="music-profile-div"
-                  className="size-24 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
+                  className="size-20 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 >
                   {musicIcon}
-                  <p className="text-sm">Explore Music Projects</p>
                 </div>
+                <p className="text-xs">Explore Music Projects</p>
               </Link>
             </div>
           </div>

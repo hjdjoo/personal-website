@@ -7,7 +7,7 @@ interface EngineeringContainerProps {
   children: React.ReactNode
 }
 
-export default async function EngineeringContainer(props: EngineeringContainerProps) {
+export default function EngineeringContainer(props: EngineeringContainerProps) {
 
   const { projects } = props;
 
