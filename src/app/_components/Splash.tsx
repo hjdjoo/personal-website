@@ -74,7 +74,6 @@ export default function Splash() {
                   className="size-20 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 >
                   {musicIcon}
-
                 </div>
                 <p className="text-xs">Explore Music Projects</p>
               </Link>

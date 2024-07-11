@@ -25,22 +25,14 @@ export default function AlbumDisplay(props: AlbumDisplayProps) {
       albumCover = resource;
     }
   }
-  // console.log(albumResources);
 
   const pressResources = albumResources ? albumResources.filter(resource => {
     return resource.type === "press" || "interview"
   }) : [];
 
-  // const albumCover = albumResources ? albumResources.filter(resource => {
-  //   return resource.type === "album cover"
-  // }) : [];
 
   const videoResources = albumResources ? albumResources.filter(resource => {
     return resource.type === "video"
-  }) : [];
-
-  const spotify = albumResources ? albumResources.filter(resource => {
-    return resource.type === "spotify link"
   }) : [];
 
 
@@ -53,7 +45,7 @@ export default function AlbumDisplay(props: AlbumDisplayProps) {
             <Image src={`${albumCover.src}`} alt={`${albumCover.altText}`} sizes={"70vw"} style={{ objectFit: "contain" }} fill />}
         </div>
         <div id="album-description"
-          className="max-w-24 flex items-center text-justify px-2 md:mx-6">
+          className="max-w-1/2 flex items-center text-justify px-2 md:mx-6">
           <p>
             {album.description}
           </p>
