@@ -9,7 +9,7 @@ import getEvents from "@/utils/supabase/clientActions/getEvents";
  Music page should:
 
  Display a splash with media quotes
-  Todo: Re-factor portfolio as parallel route to enable SSR/SEO optimization for music page.
+  finished: refactored as parallel route for SSR/SEO optimization
 
  Display a scrollable timeline.
   Timeline will have interactive points at scaled distances for album releases and other general events
@@ -20,9 +20,9 @@ import getEvents from "@/utils/supabase/clientActions/getEvents";
       description: text
       date: text
     }
-    album_resource {
+    resource {
       id: int8(serial)
-      eventId: int8 //fk - public.albums.id
+      eventId || albumId: int8 // fk - public.events.id || public.albums.id
       name: text
       type: text
       description: text
@@ -36,21 +36,23 @@ import getEvents from "@/utils/supabase/clientActions/getEvents";
       details: text
       date: text
     }
-
-  Hovering on each point will display a dialogue box.
-
+  
+  And each point should display a dialogue box that renders key information.
   Dialogue {
-    event: event.id
-    eventName: event.name
-  };
+    event: music_event,
+    eventResources: event_resource[],
+    album: album,
+    albumResources: album_resource[],
+  }
 
-  And the dialogue box could make a fetch (or middleware can fetch server-side for /music routes) for relevant info for its child components (Mini-player, press links, highlights, other media);
+  The dialogue receives its info in a fetch call to the DB (either as a server action or passed down through props), which will return each album with its resources, as well as each event with its resources.
+  Something like:
+  .from(tableName)
+  .select("*, referencingTable(*))
+  .eq("tableName_id", "id")
 
-  from("album_resources")
-  .select("*") : Array<MusicEventResources>
-
-  Use the filetype to filter data and render appropriately.
-
+  Ensure that the content of UX components reflects their function.
+  Example: A "view discography" button should not act as a toggle button. If hidden, toggle; if visible, navigate.
  */
 
 interface MusicPageProps {
