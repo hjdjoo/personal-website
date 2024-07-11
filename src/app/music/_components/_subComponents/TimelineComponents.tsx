@@ -75,20 +75,16 @@ export const TimelineMarker = ({ dialoguePosition, position, event, album }: Tim
 
   const handleMarkerClick = () => {
     if (dialogueState === "closed") {
-      console.log("opening")
       setDialogueState("opening");
       setTimeout(() => {
         setDialogueState("open");
-        console.log("open")
       }, 300);
       return;
     }
     if (dialogueState === "open") {
-      console.log("closing")
       setDialogueState("closing");
       setTimeout(() => {
         setDialogueState("closed")
-        console.log("closed")
       }, 300)
       return;
     }
@@ -103,19 +99,19 @@ export const TimelineMarker = ({ dialoguePosition, position, event, album }: Tim
         onTouchStart={handleMarkerTouch}
         onClick={handleMarkerClick}
         className={`absolute w-full max-h-fit flex flex-col items-center`}>
-        {dialogueState === "open" &&
-          <div id="clickaway-listener"
-            className="absolute -top-24 w-screen h-screen"
-            onTouchStart={handleMarkerTouch}
-            onClick={handleMarkerClick}>
-          </div>
-        }
         <div id={`dot-${position}`}
           className={`absolute size-4 flex-1 z-10 rounded-full ${!!album ? "bg-emerald-700 dark:bg-amber-200" : "bg-indigo-950 dark:bg-slate-200"} hover:cursor-pointer`}>
         </div>
         <div id={`dot-animation-${position}`}
           className={`absolute size-6 -top-1 flex-1 -z-20 rounded-full ${!!album ? "bg-emerald-500 dark:bg-amber-100" : "bg-indigo-950 dark:bg-slate-200"} hover:cursor-pointer animate-pulse`}>
         </div>
+        {dialogueState === "open" &&
+          <div id="clickaway-listener"
+            className="fixed left-0 top-0 w-screen h-screen"
+            onTouchEnd={handleMarkerTouch}
+            onClick={handleMarkerClick}>
+          </div>
+        }
       </div>
       <div
         id={`${position}-svg-line-div`}

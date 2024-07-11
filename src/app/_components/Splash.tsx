@@ -1,10 +1,17 @@
 "use client"
 
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 import { musicIconSvg, sweIconSvg } from "@/lib/icons";
+import scrollToComponentId from "@/utils/actions/scrollToComponentId";
 
 export default function Splash() {
+
+  const router = useRouter();
+  const path = usePathname();
+
+  console.log("path:", path)
 
   const aboutMeText = ["I'm a software engineer.", "I'm an audio engineer.", "I'm a songwriter.", "I'm an educator.", "I'm a science lover.", "I'm a philosphy nerd.", "I'm a history enthusiast.", "I'm a software engineer."]
 
@@ -24,7 +31,7 @@ export default function Splash() {
 
   return (
     <>
-      <div id="splash-container" className="h-screen w-full py-12 pb-12 flex flex-col justify-center items-center">
+      <div id="splash-container" className="h-screen w-full flex flex-col justify-center items-center">
         <div id="content-container"
           className="flex-1 min-h-[550px] max-h-[550px] w-full flex flex-col items-center justify-between text-center overflow-x-none object-contain">
           <div id="intro-box"
@@ -54,29 +61,42 @@ export default function Splash() {
             className="w-full md:w-3/4 lg:w-1/2 mb-20 flex flex-row justify-between">
             <div id="engineering-portfolio-link-div"
               className="flex-1 flex flex-col min-h-fit items-center mx-2">
-              <Link
+              <button
                 className="border-2 border-slate-400 w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
-                href="/engineering" scroll={false}>
+                onClick={() => {
+                  if (path === "/engineering") {
+                    scrollToComponentId("engineering-page");
+                    return;
+                  }
+                  router.push("/engineering")
+
+                }}>
                 <div id="software-engineering-icon"
                   className="size-20 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 >
                   {sweIcon}
                 </div>
                 <p className="text-xs">Explore Engineering Projects</p>
-              </Link>
+              </button>
             </div>
-            <div id="music-portfolio-link-div"
+            <div id="music-portfolio-button-div"
               className="flex-1 flex flex-col min-h-fit items-center mx-2">
-              <Link
+              <button
                 className="border-2 border-slate-400 w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
-                href="/music" scroll={false}>
+                onClick={() => {
+                  if (path === "/music") {
+                    scrollToComponentId("music-page");
+                    return;
+                  }
+                  router.push("music", { scroll: false });
+                }}>
                 <div id="music-profile-div"
                   className="size-20 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
                 >
                   {musicIcon}
                 </div>
                 <p className="text-xs">Explore Music Projects</p>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

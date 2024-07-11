@@ -1,6 +1,6 @@
 "use client"
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, Suspense } from "react";
+import { useEffect } from "react";
 
 export default function MainContainer({ children }: { children: React.ReactNode }) {
 
