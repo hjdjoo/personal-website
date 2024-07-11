@@ -1,13 +1,14 @@
 "use client"
 
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { MusicSplash } from "../_components/MusicSplash";
 import Timeline from "../_components/Timeline";
 
+import { isMobile } from "@/utils/serverActions/isMobile";
 
 import { closeIconSvg } from "@/lib/icons";
-import scrollToComponentId from "@/utils/actions/scrollToComponentId";
+import scrollToComponentId from "@/utils/clientActions/scrollToComponentId";
 import { vollkorn, dmSans, alegreya } from "@/lib/fonts";
 import { Album, MusicEvent } from "@/types/client-types/types";
 
@@ -24,8 +25,17 @@ export default function MusicContainer({ className, albums, events }: MusicConta
   const musicSplash = useRef<HTMLDivElement>(null);
 
   const [timelineState, setTimelineState] = useState<"closed" | "opening" | "open" | "closing">("closed");
+  const [mobile, setMobile] = useState<boolean>(false);
 
   const closeIcon = closeIconSvg();
+
+  useEffect(() => {
+    isMobile().then(response => {
+      console.log("setting mobile: ", response)
+      setMobile(response)
+    })
+  }, [])
+
 
   const handleTimelineButton = () => {
     if (timelineState === "closed") {
@@ -103,9 +113,13 @@ export default function MusicContainer({ className, albums, events }: MusicConta
           className={`${timelineState === "opening" && "animate-appear"} ${timelineState === "closing" && "animate-fade"}`}
         >
           <div id="close-timeline-button-container"
-            className="sticky top-0 translate-x-28 sm:translate-x-48 md:translate-x-64 translate-y-6 max-w-screen text-xs flex justify-end">
+            className={`sticky top-0 z-50 ${mobile ? "translate-x-[5.5rem]" : "translate-x-32"} sm:translate-x-48 md:translate-x-64 translate-y-6 max-w-screen text-xs flex justify-end`}
+            onTouchStart={closeTimeline}
+            onClick={closeTimeline}
+          >
             <button id="close-timeline-button"
               className={`flex justify-around px-1 py-1 w-28 top-0 left-0 border border-slate-400 rounded-xl ${dmSans.className}`}
+              onTouchStart={closeTimeline}
               onClick={closeTimeline}
             >close timeline <div id="close-timeline-icon"
               className="w-4"

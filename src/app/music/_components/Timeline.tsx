@@ -72,7 +72,7 @@ export default function Timeline({ events, albums, animation }: TimelineProps) {
         }}
         className="relative min-h-screen w-0 z-10 flex flex-col items-center py-6"
       >
-        <TimelineBar className="sm:w-[275px] md:w-[450px]" ref={timelineBar} >
+        <TimelineBar className="w-[300px] sm:w-[350px] md:w-[450px]" ref={timelineBar} >
           {timelineMarkers}
         </TimelineBar>
       </div>

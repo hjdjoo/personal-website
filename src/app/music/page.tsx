@@ -1,10 +1,6 @@
 "use server"
 
 import MusicContainer from "./_containers/MusicContainer";
-import { demoAlbumData, demoEvents } from "./lib/demoData";
-// import { EventData, AlbumData } from "./types/element-types";
-import { AlbumResource, Album, MusicEvent, EventResource } from "@/types/client-types/types";
-import formatDate from "@/utils/actions/formatDate";
 
 import getAlbums from "@/utils/supabase/clientActions/getAlbums";
 import getEvents from "@/utils/supabase/clientActions/getEvents";
