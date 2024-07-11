@@ -10,7 +10,7 @@ export default async function AlbumsPage() {
     <div id="albums-page"
       className="flex flex-col items-center"
     >
-      <p className="font-bold ">Discography:</p>
+      <p className="font-bold ">Discography</p>
       <AlbumContainer albums={albums} />
     </div>
   )

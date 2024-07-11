@@ -55,7 +55,7 @@ export default function Splash() {
             <div id="engineering-portfolio-link-div"
               className="flex-1 flex flex-col min-h-fit items-center mx-2">
               <Link
-                className="border-2 border-current w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
+                className="border-2 border-slate-400 w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
                 href="/engineering" scroll={false}>
                 <div id="software-engineering-icon"
                   className="size-20 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"
@@ -68,7 +68,7 @@ export default function Splash() {
             <div id="music-portfolio-link-div"
               className="flex-1 flex flex-col min-h-fit items-center mx-2">
               <Link
-                className="border-2 border-current w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
+                className="border-2 border-slate-400 w-full flex-1 flex flex-col items-center px-2 py-2 rounded-lg"
                 href="/music" scroll={false}>
                 <div id="music-profile-div"
                   className="size-20 sm:size-32 hover:translate-y-1 hover:scale-105 duration-100 mb-2"

@@ -13,11 +13,13 @@ export default function AlbumContainer({ albums }: AlbumContainerProps) {
 
   const [viewAlbum, setViewAlbum] = useState<number>(0)
 
-
   const albumToggles = albums.map((album, idx) => {
+
+    const active = idx === viewAlbum
+
     return (
       <button key={`album-toggle-${idx + 1}`}
-        className={`border px-2 py-1 border-current rounded-md transition duration-200`}
+        className={`flex-1 mx-2 text-sm  px-2 py-1 border border-slate-400 rounded-md transition duration-200 ${active && "bg-slate-400 dark:bg-cyan-900"}`}
         onClick={() => { setViewAlbum(idx); }}
       >
         {`${album.name}`}

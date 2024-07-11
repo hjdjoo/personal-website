@@ -31,6 +31,8 @@ export default function Timeline({ events, albums, animation }: TimelineProps) {
   // map events scaled to time between dates.
   const timelineMarkers = events.map((event, idx) => {
 
+    const albumReleased = !!albums[idx]
+
     const left = (idx % 2 === 0);
 
     const markerPosition = getMarkerPosition(event);
@@ -47,7 +49,7 @@ export default function Timeline({ events, albums, animation }: TimelineProps) {
           }}
           className={`absolute w-full`}>
           <p
-            className={`absolute w-[40%] text-xs sm:text-sm md:text-md flex flex-col ${left ? "items-end text-right" : "items-start"} -z-10 ${left ? "left-0" : "right-0"}`}
+            className={`absolute w-[40%] text-sm md:text-md flex flex-col ${left ? "items-end text-right" : "items-start"} -z-10 ${left ? "left-0" : "right-0"}`}
           >
             {event.name}
           </p>
@@ -72,7 +74,7 @@ export default function Timeline({ events, albums, animation }: TimelineProps) {
         }}
         className="relative min-h-screen w-0 z-10 flex flex-col items-center py-6"
       >
-        <TimelineBar className="w-[450px] md:w-[600px]" ref={timelineBar} >
+        <TimelineBar className="sm:w-[275px] md:w-[450px]" ref={timelineBar} >
           {timelineMarkers}
         </TimelineBar>
       </div>

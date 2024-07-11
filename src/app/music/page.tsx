@@ -74,9 +74,10 @@ export default async function MusicPage() {
     return Date.parse(a.releaseDate) - Date.parse(b.releaseDate)
   });
 
-  const albumHash = Array(events.length).fill(undefined);
 
+  const albumHash = Array(events.length).fill(undefined);
   events.forEach((event, idx) => {
+    if (!albums.length) return;
     if (event.date === albums[0].releaseDate) {
       albumHash[idx] = albums.shift();
     }

@@ -38,37 +38,42 @@ export const TimelineBar = forwardRef(function TimelineBar({ className, children
 })
 
 
+/**
+ * 
+ * @param dialoguePosition : string; 
+ * Either "left" or "right" - on alternating sides of the timeline.
+ * @param position : string; 
+ * Dynamically computed inline CSS string, as a % value from the top. eg, "top-[10%]."
+ * @param event : MusicEvent from db;
+ * @param album : Album fetched from db;
+ * See types/client-types for more info on event and album
+ * @returns A Marker component with a Dialogue component nested inside. The Dialogue component takes in the event 
+ * This component is highly reactive; take care while adjusting.
+ * 
+ */
 export const TimelineMarker = ({ dialoguePosition, position, event, album }: TimelineMarkerProps) => {
+
   // When calculating a style dynamically with JS, Tailwind does not have access to that value at compile time. In order to use these kinds of arbitrarily computed styles, use the "style" prop instead.
   const [dialogueState, setDialogueState] = useState<"closed" | "opening" | "open" | "closing">("closed")
-  const [hover, setHover] = useState<boolean>(false);
 
   const handleMarkerTouch = () => {
     if (dialogueState === "closed") {
-      // console.log("opening")
       setDialogueState("opening");
       setTimeout(() => {
         setDialogueState("open");
-        // console.log("open")
       }, 300);
       return;
     }
     else if (dialogueState === "open") {
-      // console.log("closing")
       setDialogueState("closing");
       setTimeout(() => {
         setDialogueState("closed")
-        // console.log("closed")
       }, 300)
       return;
     }
   }
 
   const handleMarkerClick = () => {
-    // if (hover && dialogueState === "closed") {
-    //   setDialogueState("open");
-    //   return;
-    // }
     if (dialogueState === "closed") {
       console.log("opening")
       setDialogueState("opening");
@@ -98,11 +103,18 @@ export const TimelineMarker = ({ dialoguePosition, position, event, album }: Tim
         onTouchStart={handleMarkerTouch}
         onClick={handleMarkerClick}
         className={`absolute w-full max-h-fit flex flex-col items-center`}>
+        {dialogueState === "open" &&
+          <div id="clickaway-listener"
+            className="absolute -top-24 w-screen h-screen"
+            onTouchStart={handleMarkerTouch}
+            onClick={handleMarkerClick}>
+          </div>
+        }
         <div id={`dot-${position}`}
-          className={`absolute size-4 flex-1 rounded-full bg-indigo-950 dark:bg-slate-200 hover:cursor-pointer`}>
+          className={`absolute size-4 flex-1 z-10 rounded-full ${!!album ? "bg-emerald-700 dark:bg-amber-200" : "bg-indigo-950 dark:bg-slate-200"} hover:cursor-pointer`}>
         </div>
         <div id={`dot-animation-${position}`}
-          className={`absolute size-6 -top-1 flex-1 rounded-full bg-indigo-950 dark:bg-slate-200 hover:cursor-pointer animate-pulse`}>
+          className={`absolute size-6 -top-1 flex-1 -z-20 rounded-full ${!!album ? "bg-emerald-500 dark:bg-amber-100" : "bg-indigo-950 dark:bg-slate-200"} hover:cursor-pointer animate-pulse`}>
         </div>
       </div>
       <div
@@ -124,7 +136,8 @@ export const TimelineMarker = ({ dialoguePosition, position, event, album }: Tim
         style={{
           top: position
         }}
-        className={`absolute w-full delay-75 ${dialogueState === "opening" && "animate-appear"} ${dialogueState === "closing" && "delay-75 animate-fade"}`}>
+        className={`absolute w-full delay-75 ${dialogueState === "opening" && "animate-appear"} ${dialogueState === "closing" && "delay-75 animate-fade"}`}
+      >
         <Dialogue event={event} album={album} dialoguePosition={dialoguePosition} />
       </div>
     </>
