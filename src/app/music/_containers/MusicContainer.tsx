@@ -113,9 +113,13 @@ export default function MusicContainer({ className, albums, events }: MusicConta
           className={`${timelineState === "opening" && "animate-appear"} ${timelineState === "closing" && "animate-fade"}`}
         >
           <div id="close-timeline-button-container"
-            className={`sticky top-0 ${mobile ? "translate-x-[5.5rem]" : "translate-x-32"} sm:translate-x-48 md:translate-x-64 translate-y-6 max-w-screen text-xs flex justify-end`}>
+            className={`sticky top-0 z-50 ${mobile ? "translate-x-[5.5rem]" : "translate-x-32"} sm:translate-x-48 md:translate-x-64 translate-y-6 max-w-screen text-xs flex justify-end`}
+            onTouchStart={closeTimeline}
+            onClick={closeTimeline}
+          >
             <button id="close-timeline-button"
               className={`flex justify-around px-1 py-1 w-28 top-0 left-0 border border-slate-400 rounded-xl ${dmSans.className}`}
+              onTouchStart={closeTimeline}
               onClick={closeTimeline}
             >close timeline <div id="close-timeline-icon"
               className="w-4"
