@@ -53,17 +53,22 @@ export default function AlbumDisplay(props: AlbumDisplayProps) {
             <Image src={`${albumCover.src}`} alt={`${albumCover.altText}`} sizes={"70vw"} style={{ objectFit: "contain" }} fill />}
         </div>
         <div id="album-description"
-          className="flex items-center text-justify px-2 md:mx-6">
+          className="max-w-24 flex items-center text-justify px-2 md:mx-6">
           <p>
             {album.description}
           </p>
         </div>
-        <div id={`${album.name}-spotify-embed`}
-          className="my-4">
-          {spotifyEmbed &&
-            <iframe style={{ borderRadius: "12px" }} src={spotifyEmbed.src} width="100%" height="450" allowFullScreen={false} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>}
-        </div>
+      </div>
+      <div id={`${album.name}-spotify-embed`}
+        className="mt-12 w-full flex justify-center">
+        {spotifyEmbed &&
+          <iframe style={{ borderRadius: "12px" }} src={spotifyEmbed.src} width="80%" height="450" allowFullScreen={false} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>}
       </div>
     </div>
   )
 }
+{/* <div id={`${album.name}-spotify-embed`}
+          className="my-4">
+          {spotifyEmbed &&
+            <iframe style={{ borderRadius: "12px" }} src={spotifyEmbed.src} width="100%" height="450" allowFullScreen={false} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>}
+        </div> */}

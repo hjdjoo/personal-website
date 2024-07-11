@@ -37,7 +37,7 @@ export default function AlbumContainer({ albums }: AlbumContainerProps) {
 
   return (
     <div id={"album-container"}
-      className="w-full my-4">
+      className="w-full lg:w-5/6 my-4">
       <div id="album-toggles-box"
         className="flex flex-row justify-between my-4">
         {albumToggles}
