@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
 import { musicIconSvg, sweIconSvg } from "@/lib/icons";
-import scrollToComponentId from "@/utils/actions/scrollToComponentId";
+import scrollToComponentId from "@/utils/clientActions/scrollToComponentId";
 
 export default function Splash() {
 

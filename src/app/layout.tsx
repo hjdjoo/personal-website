@@ -7,7 +7,7 @@ import Footer from "./_components/Footer";
 import MainContainer from "./_containers/MainContainer";
 // import RouteProvider from "@/contexts/RouteContext";
 import { headers } from "next/headers";
-import { isMobile } from "@/utils/actions/isMobile";
+import { isMobile } from "@/utils/serverActions/isMobile";
 
 import { dmSans, vollkorn } from "@/lib/fonts";
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Hee Je (Darryl) Joo's personal website for music and engineering",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   portfolio,
 }: Readonly<{
@@ -25,8 +25,7 @@ export default function RootLayout({
   portfolio: React.ReactNode,
 }>) {
 
-  const userAgent = headers().get("user-agent") || "";
-  const mobileCheck = isMobile(userAgent);
+  const mobileCheck = await isMobile();
 
   return (
     <>

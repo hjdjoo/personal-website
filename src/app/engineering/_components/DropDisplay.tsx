@@ -9,7 +9,7 @@ import { Project } from "@/types/client-types/types";
 import ProjectMediaDisplay from "./ProjectMediaDisplay";
 import TechStackContainer from "../_containers/TechStackContainer";
 
-import getComponentSize from "@/utils/actions/getComponentSize";
+import getComponentSize from "@/utils/clientActions/getComponentSize";
 
 
 
