@@ -31,8 +31,6 @@ export default function Timeline({ events, albums, animation }: TimelineProps) {
   // map events scaled to time between dates.
   const timelineMarkers = events.map((event, idx) => {
 
-    const albumReleased = !!albums[idx]
-
     const left = (idx % 2 === 0);
 
     const markerPosition = getMarkerPosition(event);

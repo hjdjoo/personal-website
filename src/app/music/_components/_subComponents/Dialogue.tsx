@@ -32,8 +32,8 @@ export const Dialogue = ({ event, album, dialoguePosition }: DialogueProps) => {
   return (
     <div className={`absolute w-full top-10 z-40 rounded-lg ${dialoguePosition === "left" ? "lg:translate-x-52" : "lg:-translate-x-52"}`}>
       <div className="absolute w-full min-h-fit">
-        <div className={`px-4 w-full bg-slate-300 dark:bg-indigo-950 ${album ? "rounded-t-lg" : "rounded-lg"} flex flex-col justify-around py-4`}>
-          <p className="text-sm my-2 italic underline">{parsedDate}:</p>
+        <div className={`px-4 w-full bg-slate-300 dark:bg-indigo-950/95 ${album ? "rounded-t-lg" : "rounded-lg"} flex flex-col justify-around py-4`}>
+          <p className="text-sm mb-3 italic underline">{parsedDate}:</p>
           <p className={`text-justify text-sm md:text-md ${dmSans.className}`}>{event.description}</p>
         </div>
         {album && <div className={`px-4 py-4 bg-sky-100 dark:bg-indigo-900 rounded-b-lg ${dmSans.className}`}>

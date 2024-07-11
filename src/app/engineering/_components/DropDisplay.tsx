@@ -102,8 +102,6 @@ export default function DropDisplay(props: DropDisplayProps) {
   }
 
 
-  console.log(dropdownStatus)
-
   return (
     <>
       <div id={`${projectName}-drop-display`}
