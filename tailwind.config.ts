@@ -13,6 +13,9 @@ const config: Config = {
         "close-up": "closeUp 400ms ease-in-out forwards",
         "appear": "appear 400ms ease-in-out forwards",
         "fade": "fade 400ms ease-in-out forwards",
+        "drop-in": "drop 1000ms cubic-bezier(0.7, 0.3, 0.9, 1) 0ms forwards",
+        // "bounce": "",
+        // "spin": "",
       },
       keyframes: {
         scrollUp: {
@@ -76,6 +79,14 @@ const config: Config = {
             opacity: "0%"
           }
         },
+        drop: {
+          "0%": {
+            transform: "translateY(-100vh)"
+          },
+          "100%": {
+            transform: "translateY(0%)"
+          }
+        }
       },
     },
   },

@@ -6,6 +6,7 @@ import { nextButtonSvg, prevButtonSvg } from "@/lib/icons";
 
 import { Project } from "@/types/client-types/types";
 
+import Card from "@/app/_components/Card";
 import ProjectMediaDisplay from "./ProjectMediaDisplay";
 import TechStackContainer from "../_containers/TechStackContainer";
 
@@ -103,9 +104,9 @@ export default function DropDisplay(props: DropDisplayProps) {
 
 
   return (
-    <>
+    <Card>
       <div id={`${projectName}-drop-display`}
-        className={`relative mt-8 w-full l flex flex-col justify-center rounded-sm  hover:cursor-pointer
+        className={`relative mt-8 w-full flex flex-col justify-center  hover:cursor-pointer
         bg-gradient-to-r from-30%  from-slate-300 to-slate-100 dark:bg-gradient-to-r dark:from-30% dark:from-indigo-950  dark:to-sky-950`}
         onTouchStart={handleTouch}
         onClick={handleClick}
@@ -130,7 +131,7 @@ export default function DropDisplay(props: DropDisplayProps) {
           </div>
           <div className="flex flex-2 text-xs px-6 sm:text-sm lg:text-lg mt-auto mb-auto ml-auto mr-3 font-thin">
             {projectDescription}
-            <div className={`size-4 mb-auto ml-auto lg:ml-4 lg:mt-auto ${dropdownStatus !== ("closed" || "hover") ? "transition duration-100 rotate-90" : "transition duration-100 rotate-0"}`} >
+            <div className={`size-4 mb-auto ml-auto lg:ml-4 lg:mt-auto ${dropdownStatus !== "closed" ? "transition duration-100 rotate-90" : "transition duration-100 rotate-0"}`} >
               {nextButton}
             </div>
           </div>
@@ -156,6 +157,6 @@ export default function DropDisplay(props: DropDisplayProps) {
           </div>
         </div>}
       <TechStackContainer projectName={projectName} techStack={techStack} githubRepo={githubRepo}></TechStackContainer>
-    </>
+    </Card>
   )
 }
