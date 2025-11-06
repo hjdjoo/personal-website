@@ -6,7 +6,7 @@ import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
 import MainContainer from "./_containers/MainContainer";
 // import RouteProvider from "@/contexts/RouteContext";
-import { headers } from "next/headers";
+
 import { isMobile } from "@/utils/serverActions/isMobile";
 
 import { dmSans, vollkorn } from "@/lib/fonts";

@@ -47,9 +47,9 @@ export default function TechStackContainer(props: TechStackProps) {
 
   return (
     <div id={`${projectName}-tech-stack-box`}
-      className="w-full text-slate-950 dark:text-slate-200">
+      className="w-full text-slate-950 dark:text-slate-200 rounded-b-md">
       <div
-        className="w-full h-10 bg-indigo-300/30 dark:bg-slate-800 flex justify-around items-center ">
+        className="w-full h-10 bg-indigo-300/30 dark:bg-slate-800 flex justify-around items-center rounded-b-md">
         <div id={`${projectName}-tech-stack-toggle`}
           className="text-xs sm:text-sm md:text-md hover:cursor-pointer transition duration-300 hover:translate-y-[2px]"
           onClick={handleShowTechStack}

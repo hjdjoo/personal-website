@@ -9,7 +9,7 @@ interface EngineeringContainerProps {
 
 export default function EngineeringContainer(props: EngineeringContainerProps) {
 
-  const { projects } = props;
+  const { projects, children } = props;
 
   const ProjectDisplays = projects.length ? projects.map((project) => {
     return (
@@ -23,7 +23,7 @@ export default function EngineeringContainer(props: EngineeringContainerProps) {
     <div id="engineering-page"
       className="h-3/4 w-full max-w-screen
       md:max-w-[1080px] lg:max-w-[1200px] flex flex-col items-center justify-center py-12 lg:px-12">
-      {props.children}
+      {children}
       {ProjectDisplays}
     </div>
   )

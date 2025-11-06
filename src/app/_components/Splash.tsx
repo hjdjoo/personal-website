@@ -73,7 +73,7 @@ export default function Splash() {
                 >
                   {sweIcon}
                 </div>
-                <p className="text-xs">Explore Engineering Projects</p>
+                <p className="text-sm">Software Engineering</p>
               </button>
             </div>
             <div id="music-portfolio-button-div"
@@ -92,7 +92,7 @@ export default function Splash() {
                 >
                   {musicIcon}
                 </div>
-                <p className="text-xs">Explore Music Projects</p>
+                <p className="text-sm">Music</p>
               </button>
             </div>
           </div>

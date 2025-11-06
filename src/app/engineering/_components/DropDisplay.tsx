@@ -12,8 +12,6 @@ import TechStackContainer from "../_containers/TechStackContainer";
 
 import getComponentSize from "@/utils/clientActions/getComponentSize";
 
-
-
 interface DropDisplayProps extends Project {
 
 }
@@ -106,7 +104,7 @@ export default function DropDisplay(props: DropDisplayProps) {
   return (
     <Card>
       <div id={`${projectName}-drop-display`}
-        className={`relative mt-8 w-full flex flex-col justify-center  hover:cursor-pointer
+        className={`relative w-full rounded-t-md flex flex-col justify-center  hover:cursor-pointer
         bg-gradient-to-r from-30%  from-slate-300 to-slate-100 dark:bg-gradient-to-r dark:from-30% dark:from-indigo-950  dark:to-sky-950`}
         onTouchStart={handleTouch}
         onClick={handleClick}
@@ -120,11 +118,11 @@ export default function DropDisplay(props: DropDisplayProps) {
         }}
         ref={projectBox}>
         <div id="drop-display-header-bg-transition-div"
-          className={`absolute w-full h-full bg-gradient-to-r from-slate-400 to-slate-200 dark:bg-gradient-to-r dark:from-slate-950 dark:to-indigo-800 ${dropdownStatus !== "open" && "transition-opacity duration-300"} ${dropdownStatus === "hover" || dropdownStatus === "open" || dropdownStatus === "opening" ? "opacity-100" : "opacity-0"}`}
+          className={`absolute w-full h-full rounded-t-md bg-gradient-to-r from-slate-400 to-slate-200 dark:bg-gradient-to-r dark:from-slate-950 dark:to-indigo-800 ${dropdownStatus !== "open" && "transition-opacity duration-300"} ${dropdownStatus === "hover" || dropdownStatus === "open" || dropdownStatus === "opening" ? "opacity-100" : "opacity-0"}`}
         >
         </div>
         <div id={`${projectName}-header`}
-          className={`relative mt-2 mb-2 lg:flex w-full`}
+          className={`relative mt-2 mb-2 lg:flex w-full `}
         >
           <div className="flex-1 sm:text-md px-6 lg:text-xl font-semibold underline">
             {projectName}:
@@ -138,13 +136,13 @@ export default function DropDisplay(props: DropDisplayProps) {
         </div>
       </div>
       {(dropdownStatus !== "closed" && dropdownStatus !== "hover") &&
-        <div id={`${projectName}-media-spacer`}
-          className={`relative bg-transparent w-full h-[450px] sm:h-[500px] md:h-[600px] lg:h-[700px]`}
+        <div id={`${projectName}-media-container`}
+          className={`relative bg-transparent w-full h-auto`}
         >
           <div id={`${projectName}-media-display`}
-            className={`relative w-full flex flex-col justify-end overflow-hidden rounded-sm bg-gradient-to-r from-slate-400 to-slate-200 dark:bg-gradient-to-r dark:from-slate-950 dark:to-indigo-800 ${dropdownClasses()}`}>
+            className={`relative w-full pt-12 flex flex-col justify-end overflow-hidden rounded-sm bg-gradient-to-r from-slate-400 to-slate-200 dark:bg-gradient-to-r dark:from-slate-950 dark:to-indigo-800 ${dropdownClasses()}`}>
             <ul id="media-gallery"
-              className="absolute w-full pb-10 top-6 flex overflow-x-scroll no-scrollbar scroll-auto"
+              className="w-full relative pb-10 flex items-center overflow-x-scroll no-scrollbar scroll-auto "
               ref={gallery}
             >
               {dropdownStatus === "open" && projectMedia}
