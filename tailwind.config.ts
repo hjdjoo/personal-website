@@ -13,6 +13,7 @@ const config: Config = {
         "close-up": "closeUp 400ms ease-in-out forwards",
         "appear": "appear 400ms ease-in-out forwards",
         "fade": "fade 400ms ease-in-out forwards",
+        "drop-in": "drop 1500ms cubic-bezier(0.8, 0.11, 0.97, 0.47) 0ms both, bounce 1500ms 1500ms forwards",
       },
       keyframes: {
         scrollUp: {
@@ -74,6 +75,39 @@ const config: Config = {
           },
           "100%": {
             opacity: "0%"
+          }
+        },
+        drop: {
+          "0%": {
+            transform: "translateY(-50vh)"
+          },
+          "100%": {
+            transform: "translateY(0)"
+          }
+        },
+        bounce: {
+          "0%": {
+            transform: "none",
+            animationTimingFunction: "cubic-bezier(0.17, 0.74, 0.44, 0.9 )"
+          },
+          "30%": {
+            transform: "translateY(-4rem)",
+            animationTimingFunction: "cubic-bezier(0.74, 0.17, 0.93, 0.47)"
+          },
+          "50%": {
+            transform: "none",
+            animationTimingFunction: "cubic-bezier(0.17, 0.74, 0.44, 0.9)"
+          },
+          "80%": {
+            transform: "translateY(-2rem)",
+            animationTimingFunction: "cubic-bezier(0.74, 0.17, 0.93, 0.47)"
+          },
+          "99%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0.17, 0.74, 0.44, 0.9)"
+          },
+          "100%": {
+            transform: "translateY(0)",
           }
         },
       },

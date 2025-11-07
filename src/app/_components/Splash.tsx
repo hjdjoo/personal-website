@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
 import { musicIconSvg, sweIconSvg } from "@/lib/icons";
@@ -10,8 +9,6 @@ export default function Splash() {
 
   const router = useRouter();
   const path = usePathname();
-
-  console.log("path:", path)
 
   const aboutMeText = ["I'm a software engineer.", "I'm an audio engineer.", "I'm a songwriter.", "I'm an educator.", "I'm a science lover.", "I'm a philosphy nerd.", "I'm a history enthusiast.", "I'm a software engineer."]
 
@@ -35,9 +32,8 @@ export default function Splash() {
         <div id="content-container"
           className="flex-1 min-h-[550px] max-h-[550px] w-full flex flex-col items-center justify-between text-center overflow-x-none object-contain">
           <div id="intro-box"
-            className="w-min">
-            <h1 className="text-5xl my-3 whitespace-nowrap">Hello, world!</h1>
-            <p className="text-lg my-1 whitespace-nowrap">My name is Darryl. </p>
+            className="">
+            <h1 className="text-5xl my-3 whitespace-nowrap -translate-y-[100vh] animate-drop-in">My name is Darryl.</h1>
           </div>
           <span id="about-me"
             className="inline-flex flex-col overflow-y-hidden h-[calc(theme(fontSize.2xl)*theme(lineHeight.tight))]">
@@ -49,7 +45,8 @@ export default function Splash() {
           <div id="download-resume"
             className="transition duration-300 hover:translate-y-1"
           >
-            <a href="/darryl_joo_resume.pdf" download
+            <a href="/darryl_joo_resume.pdf"
+              download
               className="font-bold bg-slate-300 dark:bg-slate-500 px-2 py-2 rounded-lg transition duration-200 hover:bg-slate-600 hover:dark:bg-slate-700 hover:text-slate-200">
               Download Resume
             </a>
@@ -76,7 +73,7 @@ export default function Splash() {
                 >
                   {sweIcon}
                 </div>
-                <p className="text-xs">Explore Engineering Projects</p>
+                <p className="text-sm">Software Engineering</p>
               </button>
             </div>
             <div id="music-portfolio-button-div"
@@ -95,7 +92,7 @@ export default function Splash() {
                 >
                   {musicIcon}
                 </div>
-                <p className="text-xs">Explore Music Projects</p>
+                <p className="text-sm">Music</p>
               </button>
             </div>
           </div>

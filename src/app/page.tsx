@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import Splash from "./_components/Splash";
 
 
